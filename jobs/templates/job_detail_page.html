@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+
+<link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
+
+<style>
+    .important-links-wrapper {
+        /* border: 1px solid #ddd; */
+        border-radius: 6px;
+        overflow: hidden;
+        /* background: #fff; */
+        color: wheat;
+    }
+
+    .important-link-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+        gap: 15px;
+    }
+
+    .important-link-item:last-child {
+        border-bottom: none;
+    }
+
+    .important-link-title {
+        font-weight: 500;
+        font-size: 18px;
+        color: var(--text-color);
+    }
+
+    .important-link-btn {
+        flex-shrink: 0;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 576px) {
+        .important-link-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .important-link-btn {
+            width: 100%;
+        }
+
+        .important-link-btn a {
+            width: 100%;
+        }
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container-lg px-4 py-4"><!-- Breadcrumb -->
+    <div
+        style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);">
+        <span class="breadcrumb-link" onclick="goToHome()">← Home</span> <span>/</span> <span id="jobBreadcrumb">Job
+            Details</span>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="job-header glass-card p-4 mb-4">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                    <div>
+                        <h1 id="jobTitle"
+                            style="font-size: 28px; font-weight: 800; margin-bottom: 8px; font-family: 'Plus Jakarta Sans', sans-serif;">
+                            {{job_info.title}}
+                        </h1>
+                        <p id="jobOrg" style="font-size: 16px; margin: 0; color: #cbd5e1;"></p>
+                    </div><span id="jobBadge" class="badge-hot">New</span>
+                </div>
+            </div><!-- Quick Meta -->
+            <div class="row g-2 mb-4">
+                <div class="col-6">
+                    <div class="job-meta-item"><i data-lucide="calendar"
+                            style="width: 16px; height: 16px; color: var(--accent);"></i>
+                        <div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">
+                                Posted Date
+                            </div>
+                            <div id="postedDate" style="font-weight: 600;">23 April 2026 | 12:00 AM</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="job-meta-item"><i data-lucide="users"
+                            style="width: 16px; height: 16px; color: var(--accent);"></i>
+                        <div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">
+                                Vacancies
+                            </div>
+                            <div id="vacancies" style="font-weight: 600;">{{job_info.total_vacancies}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- About Job -->
+            <div class="info-section">
+                <h5>About This Job</h5>
+                <p id="jobDescription">{{job_info.short_description}}</p>
+            </div>
+
+            {% for jobInfo in job_info.job_wigets %}
+            <!-- Job Widgets -->
+            <div class="info-section">
+                <h5>{{jobInfo.title}}</h5>
+                <div id="importantDates">{{jobInfo.description|safe}}</div>
+            </div>
+            {% endfor %}
+            <!-- <div class="info-section">
+                    <div>
+                        <h5>{{job_info.title}}, Vacancy Details, Total {{job_info.total_vacancies}} Vacancies</h5>
+                    </div>
+                    <div id="selectionProcess">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Post Name</th>
+                                    <th scope="col">Total Posts</th>
+                                    <th scope="col">Post Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for vn in job_info.vacancies %}
+                                <tr>
+                                    <td>{{vn.post_name}}</td>
+                                    <td>{{vn.total_posts}}</td>
+                                    <td>{{vn.description | safe}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div> -->
+
+
+
+            <!-- How to Apply -->
+            <!-- <div class="info-section">
+                <h5>{{job_info.guides.title|title }}</h5>
+                <div id="howToApply">{{job_info.guides.guides|safe}}</div>
+            </div> -->
+            <div class="info-section">
+                <h5>Important Links</h5>
+                <div class="important-links-wrapper">
+
+                    {% for link in job_info.important_links %}
+                    <div class="important-link-item">
+
+                        <!-- Title -->
+                        <div class="important-link-title">
+                            {{ link.title }}
+                        </div>
+
+                        <!-- Button -->
+                        <div class="important-link-btn">
+                            <a href="{{ link.url }}" target="_blank" class="btn btn-sm text-white link-bg-color">
+                                Click Here
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    {% empty %}
+                    <div class="text-center py-3">
+                        No social links found.
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+
+
+            </div>
+            <div class="info-section">
+                <h5>SarkariJobsFind.com Official Handles</h5>
+                <div class="important-links-wrapper">
+
+                    {% for link in social_links %}
+                    <div class="important-link-item">
+
+                        <!-- Title -->
+                        <div class="important-link-title">
+                            {{ link.title }}
+                        </div>
+
+                        <!-- Button -->
+                        <div class="important-link-btn">
+                            <a href="{{ link.url }}" target="_blank" class="btn btn-sm text-white link-bg-color">
+                                Click Here
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    {% empty %}
+                    <div class="text-center py-3">
+                        No social links found.
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div><!-- Sidebar -->
+        </div>
+        <div class="col-lg-4">
+            <div class="sidebar-card"><button class="apply-btn mb-3">Apply Now</button>
+                <div class="share-buttons"><button class="share-btn"> <i data-lucide="share-2"
+                            style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;"></i>
+                        Share </button>
+                    <button class="share-btn"> <i data-lucide="bookmark"
+                            style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;"></i>
+                        Save </button>
+                </div>
+            </div><!-- Important Dates Sidebar -->
+            <div class="sidebar-card">
+                <h6 style="font-weight: 700; margin-bottom: 16px; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    Key
+                    Dates</h6>
+                <div id="keyDatesSidebar"></div>
+            </div><!-- Organization Info -->
+            <div class="sidebar-card">
+                <h6 style="font-weight: 700; margin-bottom: 12px; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    About
+                    Organization</h6>
+                <p id="orgInfo" style="font-size: 14px; line-height: 1.6; margin: 0;"></p>
+            </div><!-- Useful Links -->
+            <div class="sidebar-card">
+                <h6 style="font-weight: 700; margin-bottom: 12px; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    Useful
+                    Links</h6>
+                <div style="display: flex; flex-direction: column; gap: 8px;"><a href="#"
+                        style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px;">📋
+                        Official
+                        Notification</a> <a href="#"
+                        style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px;">🌐
+                        Official
+                        Website</a> <a href="#"
+                        style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px;">📥
+                        Download
+                        Syllabus</a> <a href="#"
+                        style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px;">💡
+                        Preparation Tips</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script src="{% static 'jobs/js/home.js' %}"></script>
+{% endblock %}

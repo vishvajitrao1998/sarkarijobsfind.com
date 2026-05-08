@@ -1,0 +1,409 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+
+<link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- HOME PAGE -->
+            <div id="homePages" class="page-visisble"><!-- TICKER -->
+                <div class="ticker-strip py-2 w-100">
+                    <div class="ticker-content text-sm fw-semibold text-white"><span>🔥 UPSC CSE 2025 Notification
+                            Out!</span>
+                        <span>📋 SSC CGL 2025 Application Started</span> <span>🏦 RBI Grade B Recruitment — Apply
+                            Now</span>
+                        <span>🚂
+                            RRB NTPC Result Declared</span> <span>📢 IBPS PO 2025 — Last Date Extended</span> <span>⚡
+                            Army Agniveer
+                            Bharti 2025 — New Dates</span> <span>🔥 UPSC CSE 2025 Notification Out!</span> <span>📋 SSC
+                            CGL 2025
+                            Application Started</span> <span>🏦 RBI Grade B Recruitment — Apply Now</span>
+                    </div>
+                </div><!-- HERO -->
+                <section class="hero-gradient py-5 px-4 position-relative overflow-hidden">
+                    <div class="container-lg">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="d-flex justify-content-center">
+                                    <div
+                                        class="d-inline-flex align-items-center justify-content-center gap-2 bg-white bg-opacity-10 rounded-pill px-4 py-2 mb-4">
+                                        <div class="pulse-dot"></div><span
+                                            style="font-size: 14px; font-weight: 500; color: #a3e635;">Live
+                                            Updates Available</span>
+                                    </div>
+                                </div>
+                                <h2 id="hero-heading"
+                                    style="font-size: clamp(28px, 5vw, 56px); font-weight: 800; color: white; margin-bottom: 16px; line-height: 1.2; font-family: 'Plus Jakarta Sans', sans-serif;"
+                                    class="text-center">
+                                    Find Your Dream <span style="color: #fbbf24;">Sarkari Job</span></h2>
+                                <div class="text-center mb-1">
+                                    <h2 class="clean-curve">SarkariJobsFind.com</h2>
+                                </div>
+                                <p id="hero-subtext"
+                                    style="color: #cbd5e1; font-size: 18px; margin-bottom: 32px; max-width: 500px; line-height: 1.6;"
+                                    class="d-flex align-items-center justify-content-center mx-auto text-center">
+                                    Get
+                                    instant updates on government job vacancies, exam results, admit cards, and answer
+                                    keys — all in
+                                    one
+                                    place.</p>
+                                <div class="search-box mx-auto" style="max-width: 500px;"><i data-lucide="search"
+                                        style="margin-left: 16px; color: #94a3b8; width: 20px; height: 20px;"></i>
+                                    <input type="text" placeholder="Search jobs, results, admit cards..."
+                                        style="color: white;" id="searchInput">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="mx-5">
+        <h6>📢 Connect with <strong class="text-decoration-underline">SarkariJobsFind.com</strong> to Get instant
+            Updates....</h6>
+        <div class="social-links">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp">
+                <i data-lucide="message-circle" style="width: 16px; height: 16px;"></i>
+                WhatsApp </a> <a href="https://facebook.com/sarkarijobshub" target="_blank" rel="noopener noreferrer"
+                class="social-btn facebook"> <i data-lucide="facebook" style="width: 16px; height: 16px;"></i> Facebook
+            </a>
+            <a href="https://t.me/sarkarijobshub" target="_blank" rel="noopener noreferrer" class="social-btn telegram">
+                <i data-lucide="send" style="width: 16px; height: 16px;"></i> Telegram </a>
+            <!-- <a href="https://twitter.com/sarkarijobshub" target="_blank" rel="noopener noreferrer" class="social-btn twitter"> <i
+                data-lucide="x" style="width: 16px; height: 16px;"></i> Twitter </a> -->
+        </div>
+
+    </div>
+</div>
+
+<div class="container my-4">
+    <div class="row g-2">
+        <div class="col-6 col-md-3">
+            <a href="#" class="job-card bg1">UP Scholarship Status 2025</a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="#" class="job-card bg2 d-flex">UP Board Result 2025</a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="#" class="job-card bg3 d-flex">Railway भर्ती 2025</a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="#" class="job-card bg4">SSC GD Admit Card</a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="#" class="job-card bg5">पुलिस भर्ती 2025</a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="#" class="job-card bg6">UPSC Notification 2025</a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="#" class="job-card bg7">CTET Result 2025</a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a href="#" class="job-card bg8">Bank भर्ती 2025</a>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row g-3">
+        <!-- Result -->
+        <div class="col-12 col-md-4">
+            <div class="sarkari-box">
+                <div class="sarkari-header">Result</div>
+                <ul class="sarkari-list">
+                    <li><a href="#">UP Board Class 10th / 12th Result 2026</a></li>
+                    <li><a href="#">SSC GD Result 2025</a></li>
+                    <li><a href="#">Railway Group D Result</a></li>
+                    <li><a href="#">UP Police Result 2025</a></li>
+                </ul>
+                <!-- View More -->
+                <a href="#" class="view-more-btn">View More →</a>
+            </div>
+        </div>
+
+        <!-- Admit Card -->
+        <div class="col-12 col-md-4">
+            <div class="sarkari-box">
+                <div class="sarkari-header">Admit Card</div>
+                <ul class="sarkari-list">
+                    <li><a href="#">Bihar BPSC Stenographer New Exam Date 2026</a></li>
+                    <li><a href="#">SSC GD Admit Card</a></li>
+                    <li><a href="#">UP Police Admit Card</a></li>
+                    <li><a href="#">CTET Admit Card</a></li>
+                </ul>
+                <!-- View More -->
+                <a href="#" class="view-more-btn">View More →</a>
+            </div>
+        </div>
+
+        <!-- Top Online Form -->
+        <div class="col-12 col-md-4">
+            <div class="sarkari-box">
+                <div class="sarkari-header">Top Online Form</div>
+                <ul class="sarkari-list">
+                    <li><a href="#">CRPF Constable Tradesmen Online Form 2026</a></li>
+                    <li><a href="#">Railway भर्ती 2025 Apply</a></li>
+                    <li><a href="#">UP Scholarship Form</a></li>
+                    <li><a href="#">Bank PO Online Form</a></li>
+                </ul>
+                <!-- View More -->
+                <a href="#" class="view-more-btn">View More →</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="row g-3 mt-2">
+        <!-- Result -->
+        <div class="col-12 col-md-4">
+            <div class="sarkari-box">
+                <div class="sarkari-header">Syllabus</div>
+                <ul class="sarkari-list">
+                    <li><a href="#">UP Board Class 10th / 12th Syllabus 2026</a></li>
+                    <li><a href="#">SSC GD Syllabus 2025</a></li>
+                    <li><a href="#">Railway Group D Syllabus</a></li>
+                    <li><a href="#">UP Police Syllabus 2025</a></li>
+                </ul>
+                <!-- View More -->
+                <a href="#" class="view-more-btn">View More →</a>
+            </div>
+        </div>
+
+        <!-- Admit Card -->
+        <div class="col-12 col-md-4">
+            <div class="sarkari-box">
+                <div class="sarkari-header">Answer Keys</div>
+                <ul class="sarkari-list">
+                    <li><a href="#">Bihar BPSC Stenographer New Exam Date 2026</a></li>
+                    <li><a href="#">SSC GD Admit Card</a></li>
+                    <li><a href="#">UP Police Admit Card</a></li>
+                    <li><a href="#">CTET Admit Card</a></li>
+                </ul>
+                <!-- View More -->
+                <a href="#" class="view-more-btn">View More →</a>
+            </div>
+        </div>
+
+        <!-- Top Online Form -->
+        <div class="col-12 col-md-4">
+            <div class="sarkari-box">
+                <div class="sarkari-header">Documents Verification</div>
+                <ul class="sarkari-list">
+                    <li><a href="#">CRPF Constable Tradesmen Online Form 2026</a></li>
+                    <li><a href="#">Railway भर्ती 2025 Apply</a></li>
+                    <li><a href="#">UP Scholarship Form</a></li>
+                    <li><a href="#">Bank PO Online Form</a></li>
+                </ul>
+                <!-- View More -->
+                <a href="#" class="view-more-btn">View More →</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="row g-3 mt-2">
+        <!-- Result -->
+        <div class="col-12 col-md-4">
+            <div class="sarkari-box">
+                <div class="sarkari-header">Syllabus</div>
+                <ul class="sarkari-list">
+                    <li><a href="#">UP Board Class 10th / 12th Syllabus 2026</a></li>
+                    <li><a href="#">SSC GD Syllabus 2025</a></li>
+                    <li><a href="#">Railway Group D Syllabus</a></li>
+                    <li><a href="#">UP Police Syllabus 2025</a></li>
+                </ul>
+                <!-- View More -->
+                <a href="#" class="view-more-btn">View More →</a>
+            </div>
+        </div>
+
+        <!-- Admit Card -->
+        <div class="col-12 col-md-4">
+            <div class="sarkari-box">
+                <div class="sarkari-header">Answer Keys</div>
+                <ul class="sarkari-list">
+                    <li><a href="#">Bihar BPSC Stenographer New Exam Date 2026</a></li>
+                    <li><a href="#">SSC GD Admit Card</a></li>
+                    <li><a href="#">UP Police Admit Card</a></li>
+                    <li><a href="#">CTET Admit Card</a></li>
+                </ul>
+                <!-- View More -->
+                <a href="#" class="view-more-btn">View More →</a>
+            </div>
+        </div>
+
+        <!-- Top Online Form -->
+        <div class="col-12 col-md-4">
+            <div class="sarkari-box">
+                <div class="sarkari-header">Documents Verification</div>
+                <ul class="sarkari-list">
+                    <li><a href="#">CRPF Constable Tradesmen Online Form 2026</a></li>
+                    <li><a href="#">Railway भर्ती 2025 Apply</a></li>
+                    <li><a href="#">UP Scholarship Form</a></li>
+                    <li><a href="#">Bank PO Online Form</a></li>
+                </ul>
+                <!-- View More -->
+                <a href="#" class="view-more-btn">View More →</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="why-section">
+
+        <h2 class="why-title">Why Use SarkariJobsFind.com?</h2>
+        <p class="why-subtitle">
+            Your trusted source for latest सरकारी नौकरी updates, results, and admit cards.
+        </p>
+
+        <div class="row g-4 mt-3">
+
+            <div class="col-12 col-md-4">
+                <div class="why-card">
+                    <div class="why-icon">⚡</div>
+                    <h5>Fast Updates</h5>
+                    <p>Get instant updates on latest government jobs, results, and admit cards without delay.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="why-card">
+                    <div class="why-icon">✔️</div>
+                    <h5>Accurate Information</h5>
+                    <p>We provide verified and simplified information collected from official sources.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="why-card">
+                    <div class="why-icon">🧭</div>
+                    <h5>Easy Navigation</h5>
+                    <p>Find jobs, results, and forms easily with our simple and user-friendly interface.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="why-card">
+                    <div class="why-icon">📢</div>
+                    <h5>All in One Place</h5>
+                    <p>Access railway, SSC, बैंक, पुलिस, UPSC and other job updates in one platform.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="why-card">
+                    <div class="why-icon">💯</div>
+                    <h5>100% Free</h5>
+                    <p>Our platform is completely free with no hidden charges or subscriptions.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="why-card">
+                    <div class="why-icon">🔗</div>
+                    <h5>Official Links</h5>
+                    <p>We always provide direct links to official websites for safe and secure application.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container my-5">
+    <div class="info-section text-center">
+        <h2 class="info-title">What Information Does SarkariJobsFind.com Provide?</h2>
+        <p class="info-subtitle">
+            We bring all important सरकारी updates in one place to help you stay ahead.
+        </p>
+
+        <div class="row g-4 mt-3">
+
+            <div class="col-12 col-md-4">
+                <div class="info-card">
+                    <div class="info-icon">📢</div>
+                    <h5>Latest Government Jobs</h5>
+                    <p>Get daily updates on central and state government job notifications including रेलवे, SSC, बैंक,
+                        UPSC, and more.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="info-card">
+                    <div class="info-icon">📝</div>
+                    <h5>Online Forms</h5>
+                    <p>Apply easily through direct official links for various government job online forms and
+                        recruitment processes.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="info-card">
+                    <div class="info-icon">🎫</div>
+                    <h5>Admit Cards</h5>
+                    <p>Download admit cards for exams like SSC, रेलवे, बैंक, पुलिस भर्ती, and other competitive exams.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="info-card">
+                    <div class="info-icon">📊</div>
+                    <h5>Results</h5>
+                    <p>Check latest exam results, merit lists, and scorecards for various government exams.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="info-card">
+                    <div class="info-icon">📄</div>
+                    <h5>Answer Keys</h5>
+                    <p>Access official answer keys to estimate your scores before final results are announced.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="info-card">
+                    <div class="info-icon">📅</div>
+                    <h5>Exam Dates & Updates</h5>
+                    <p>Stay updated with exam schedules, important dates, and latest announcements.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- FAQs -->
+{% include 'partials/faqs.html' %}
+{% include 'partials/disclaimer.html' %}
+
+
+
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script src="{% static 'jobs/js/home.js' %}"></script>
+{% endblock %}

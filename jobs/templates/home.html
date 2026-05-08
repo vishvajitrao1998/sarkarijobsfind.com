@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+
+<link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 p-0">
+            <!-- HOME PAGE -->
+            <div id="homePages" class="page-visisble"><!-- TICKER -->
+                <div class="ticker-strip py-2 w-100">
+                    <div class="ticker-content text-sm fw-semibold text-white"><span>🔥 UPSC CSE 2025 Notification
+                            Out!</span>
+                        <span>📋 SSC CGL 2025 Application Started</span> <span>🏦 RBI Grade B Recruitment — Apply
+                            Now</span>
+                        <span>🚂
+                            RRB NTPC Result Declared</span> <span>📢 IBPS PO 2025 — Last Date Extended</span> <span>⚡
+                            Army Agniveer
+                            Bharti 2025 — New Dates</span> <span>🔥 UPSC CSE 2025 Notification Out!</span> <span>📋 SSC
+                            CGL 2025
+                            Application Started</span> <span>🏦 RBI Grade B Recruitment — Apply Now</span>
+                    </div>
+                </div><!-- HERO -->
+                <section class="hero-gradient py-5 px-4 position-relative overflow-hidden">
+                    <div class="container-lg">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="d-flex justify-content-center">
+                                    <div
+                                        class="d-inline-flex align-items-center justify-content-center gap-2 bg-white bg-opacity-10 rounded-pill px-4 py-2 mb-4">
+                                        <div class="pulse-dot"></div><span
+                                            style="font-size: 14px; font-weight: 500; color: #a3e635;">Live
+                                            Updates Available</span>
+                                    </div>
+                                </div>
+                                <h2 id="hero-heading"
+                                    style="font-size: clamp(28px, 5vw, 56px); font-weight: 800; color: white; margin-bottom: 16px; line-height: 1.2; font-family: 'Plus Jakarta Sans', sans-serif;"
+                                    class="text-center">
+                                    Find Your Dream <span style="color: #fbbf24;">Sarkari Job</span></h2>
+                                <p id="hero-subtext"
+                                    style="color: #cbd5e1; font-size: 18px; margin-bottom: 32px; max-width: 500px; line-height: 1.6;"
+                                    class="d-flex align-items-center justify-content-center mx-auto text-center">
+                                    Get
+                                    instant updates on government job vacancies, exam results, admit cards, and answer
+                                    keys — all in
+                                    one
+                                    place.</p>
+                                <div class="search-box mx-auto" style="max-width: 500px;"><i data-lucide="search"
+                                        style="margin-left: 16px; color: #94a3b8; width: 20px; height: 20px;"></i>
+                                    <input type="text" placeholder="Search jobs, results, admit cards..."
+                                        style="color: white;" id="searchInput">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- STATS -->
+                <section class="container-lg px-4 mt-5 mb-5">
+                    <div class="row g-3">
+                        <div class="col-6 col-md-3">
+                            <div class="glass-card stat-card" style="animation-delay: 0.1s;">
+                                <div class="stat-num" style="color: #f59e0b;">
+                                    12,450+
+                                </div>
+                                <div style="font-size: 14px; color: var(--text-secondary);">
+                                    Active Jobs
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="glass-card stat-card" style="animation-delay: 0.2s;">
+                                <div class="stat-num" style="color: #3b82f6;">
+                                    3,200+
+                                </div>
+                                <div style="font-size: 14px; color: var(--text-secondary);">
+                                    Results
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="glass-card stat-card" style="animation-delay: 0.3s;">
+                                <div class="stat-num" style="color: #10b981;">
+                                    8,100+
+                                </div>
+                                <div style="font-size: 14px; color: var(--text-secondary);">
+                                    Admit Cards
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="glass-card stat-card" style="animation-delay: 0.4s;">
+                                <div class="stat-num" style="color: #8b5cf6;">
+                                    50L+
+                                </div>
+                                <div style="font-size: 14px; color: var(--text-secondary);">
+                                    Users
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- CATEGORIES -->
+                <section class="container-lg px-4 mb-5">
+                    <h3
+                        style="font-size: 24px; font-weight: bold; margin-bottom: 24px; font-family: 'Plus Jakarta Sans', sans-serif;">
+                        Browse by Category</h3>
+                    <div class="row g-3" id="categoriesGrid"></div>
+                </section><!-- TABS + LISTINGS -->
+                <section class="container-lg px-4 mb-5">
+                    <div class="d-flex flex-wrap gap-2 mb-4" id="tabBar"></div>
+                    <div class="row g-3" id="listingsContainer"></div>
+                </section><!-- IMPORTANT LINKS -->
+                <section class="container-lg px-4 mb-5">
+                    <h3
+                        style="font-size: 24px; font-weight: bold; margin-bottom: 24px; font-family: 'Plus Jakarta Sans', sans-serif;">
+                        Important Links</h3>
+                    <div class="row g-3" id="importantLinks"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script src="{% static 'jobs/js/home.js' %}"></script>
+{% endblock %}
