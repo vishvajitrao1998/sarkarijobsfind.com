@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
@@ -35,6 +37,12 @@ class Organization(models.Model):
     
 
 class Job(models.Model):
+    featured_image = models.ImageField(
+        upload_to='jobs/featured-images/',
+        null=True,
+        blank=True
+    )
+
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
 
@@ -48,7 +56,7 @@ class Job(models.Model):
     total_vacancies = models.IntegerField(null=True, blank=True)
 
     # Dates
-    posted_date = models.DateField(auto_now_add=True)
+    posted_date = models.DateTimeField(auto_now_add=True)
     last_date = models.DateField(null=True, blank=True)
     exam_date = models.DateField(null=True, blank=True)
 
@@ -153,6 +161,23 @@ class SEOSetting(models.Model):
 
     def __str__(self):
         return "SEO Settings"
+    
+
+
+class Contact(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)  # UUID field
+    name = models.CharField(max_length=100, blank=True, null=True)
+    email = models.EmailField(max_length=100, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"{self.name} from {self.email}"
+
+    class Meta:
+        verbose_name = "Contact"
+        verbose_name_plural = "Contacts"
 
 
 

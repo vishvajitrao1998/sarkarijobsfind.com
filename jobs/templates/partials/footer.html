@@ -22,14 +22,16 @@
         </div>
 
         <div class="footer-links mb-3 text-center">
-            <a href="/disclaimer/">Disclaimer</a>
+            <a href="{% url 'about_us' %}">About</a>
             <span>|</span>
-            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
             <span>|</span>
-            <a href="/terms/">Terms</a>
+            <a href="{% url 'terms_and_conditions' %}">Terms</a>
             <span>|</span>
-            <a href="/contact/">Contact</a>
+            <a href="{% url 'contact' %}">Contact</a>
         </div>
+
+        <p class="my-2 text-white"><strong>SarkariJobsFind.com</strong> is not an official government website and is not affiliated with any government organization. All information related to government jobs, admit cards, results, and online forms is collected from official websites, employment news, and other reliable sources.</p>
 
         <p style="font-size: 14px; margin-bottom: 8px; color: var(--text-secondary);">Your trusted source
             for government job updates across India.</p>

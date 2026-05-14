@@ -2,7 +2,21 @@
 {% load static %}
 {% block extra_head %}
 
+<title>SarkariJobsFind.com - Your Gateway to Government Jobs</title>
+
 <link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
+
+<style>
+    .ticker-job {
+        color: black;
+        font-weight: 500;
+        text-decoration: none;
+    }
+    .ticker-job:hover {
+        font-weight: 500;
+        text-decoration: none;
+    }
+</style>
 
 {% endblock %}
 
@@ -14,16 +28,14 @@
             <!-- HOME PAGE -->
             <div id="homePages" class="page-visisble"><!-- TICKER -->
                 <div class="ticker-strip py-2 w-100">
-                    <div class="ticker-content text-sm fw-semibold text-white"><span>🔥 UPSC CSE 2025 Notification
-                            Out!</span>
-                        <span>📋 SSC CGL 2025 Application Started</span> <span>🏦 RBI Grade B Recruitment — Apply
-                            Now</span>
-                        <span>🚂
-                            RRB NTPC Result Declared</span> <span>📢 IBPS PO 2025 — Last Date Extended</span> <span>⚡
-                            Army Agniveer
-                            Bharti 2025 — New Dates</span> <span>🔥 UPSC CSE 2025 Notification Out!</span> <span>📋 SSC
-                            CGL 2025
-                            Application Started</span> <span>🏦 RBI Grade B Recruitment — Apply Now</span>
+                    <div class="ticker-content text-sm fw-semibold text-white">
+                            {% for job in featured_jobs %}
+                            <span><a href="/{{ job.slug }}" class="ticker-job">
+                                {{ job.title }}
+                            </a></span>|
+                            {% endfor %}
+
+       
                     </div>
                 </div><!-- HERO -->
                 <section class="hero-gradient py-5 px-4 position-relative overflow-hidden">
@@ -72,8 +84,13 @@
             Updates....</h6>
         <div class="social-links">
             <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp">
-                <i data-lucide="message-circle" style="width: 16px; height: 16px;"></i>
-                WhatsApp </a> <a href="https://facebook.com/sarkarijobshub" target="_blank" rel="noopener noreferrer"
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-whatsapp" viewBox="0 0 16 16">
+                    <path
+                        d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                </svg>
+                WhatsApp </a> 
+                <a href="https://facebook.com/sarkarijobshub" target="_blank" rel="noopener noreferrer"
                 class="social-btn facebook"> <i data-lucide="facebook" style="width: 16px; height: 16px;"></i> Facebook
             </a>
             <a href="https://t.me/sarkarijobshub" target="_blank" rel="noopener noreferrer" class="social-btn telegram">
@@ -85,42 +102,24 @@
     </div>
 </div>
 
+
+<!-- Featured Jobs -->
 <div class="container my-4">
     <div class="row g-2">
+        {% for job in featured_jobs %}
         <div class="col-6 col-md-3">
-            <a href="#" class="job-card bg1">UP Scholarship Status 2025</a>
-        </div>
+            <a href="/{{ job.slug }}" class="job-card bg{{ forloop.counter }}">
+                {{ job.title }}
+            </a>
 
-        <div class="col-6 col-md-3">
-            <a href="#" class="job-card bg2 d-flex">UP Board Result 2025</a>
         </div>
-
-        <div class="col-6 col-md-3">
-            <a href="#" class="job-card bg3 d-flex">Railway भर्ती 2025</a>
-        </div>
-
-        <div class="col-6 col-md-3">
-            <a href="#" class="job-card bg4">SSC GD Admit Card</a>
-        </div>
-
-        <div class="col-6 col-md-3">
-            <a href="#" class="job-card bg5">पुलिस भर्ती 2025</a>
-        </div>
-
-        <div class="col-6 col-md-3">
-            <a href="#" class="job-card bg6">UPSC Notification 2025</a>
-        </div>
-
-        <div class="col-6 col-md-3">
-            <a href="#" class="job-card bg7">CTET Result 2025</a>
-        </div>
-
-        <div class="col-6 col-md-3">
-            <a href="#" class="job-card bg8">Bank भर्ती 2025</a>
-        </div>
+        {% endfor %}
 
     </div>
 </div>
+
+<!-- Close -->
+
 
 
 <div class="container">
@@ -130,13 +129,14 @@
             <div class="sarkari-box">
                 <div class="sarkari-header">Result</div>
                 <ul class="sarkari-list">
-                    <li><a href="#">UP Board Class 10th / 12th Result 2026</a></li>
-                    <li><a href="#">SSC GD Result 2025</a></li>
-                    <li><a href="#">Railway Group D Result</a></li>
-                    <li><a href="#">UP Police Result 2025</a></li>
+                    {% for result in result_jobs %}
+                    <li><a href="/{{ result.slug }}">{{ result.title }}</a></li>
+                    {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="#" class="view-more-btn">View More →</a>
+                <a href="{% url 'category_jobs' 'result' %}" class="view-more-btn">
+                    View More →
+                </a>
             </div>
         </div>
 
@@ -145,13 +145,12 @@
             <div class="sarkari-box">
                 <div class="sarkari-header">Admit Card</div>
                 <ul class="sarkari-list">
-                    <li><a href="#">Bihar BPSC Stenographer New Exam Date 2026</a></li>
-                    <li><a href="#">SSC GD Admit Card</a></li>
-                    <li><a href="#">UP Police Admit Card</a></li>
-                    <li><a href="#">CTET Admit Card</a></li>
+                    {% for admit_card in admit_cards %}
+                    <li><a href="/{{ admit_card.slug }}">{{ admit_card.title }}</a></li>
+                    {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="#" class="view-more-btn">View More →</a>
+                <a href="/admit-card" class="view-more-btn">View More →</a>
             </div>
         </div>
 
@@ -160,13 +159,12 @@
             <div class="sarkari-box">
                 <div class="sarkari-header">Top Online Form</div>
                 <ul class="sarkari-list">
-                    <li><a href="#">CRPF Constable Tradesmen Online Form 2026</a></li>
-                    <li><a href="#">Railway भर्ती 2025 Apply</a></li>
-                    <li><a href="#">UP Scholarship Form</a></li>
-                    <li><a href="#">Bank PO Online Form</a></li>
+                    {% for latest_job in latest_jobs %}
+                    <li><a href="/{{ latest_job.slug }}">{{ latest_job.title }}</a></li>
+                    {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="#" class="view-more-btn">View More →</a>
+                <a href="/latest-jobs" class="view-more-btn">View More →</a>
             </div>
         </div>
 
@@ -177,13 +175,12 @@
             <div class="sarkari-box">
                 <div class="sarkari-header">Syllabus</div>
                 <ul class="sarkari-list">
-                    <li><a href="#">UP Board Class 10th / 12th Syllabus 2026</a></li>
-                    <li><a href="#">SSC GD Syllabus 2025</a></li>
-                    <li><a href="#">Railway Group D Syllabus</a></li>
-                    <li><a href="#">UP Police Syllabus 2025</a></li>
+                    {% for syllabus_job in syllabus %}
+                    <li><a href="/{{ syllabus_job.slug }}">{{ syllabus_job.title }}</a></li>
+                    {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="#" class="view-more-btn">View More →</a>
+                <a href="/syllabus" class="view-more-btn">View More →</a>
             </div>
         </div>
 
@@ -192,13 +189,12 @@
             <div class="sarkari-box">
                 <div class="sarkari-header">Answer Keys</div>
                 <ul class="sarkari-list">
-                    <li><a href="#">Bihar BPSC Stenographer New Exam Date 2026</a></li>
-                    <li><a href="#">SSC GD Admit Card</a></li>
-                    <li><a href="#">UP Police Admit Card</a></li>
-                    <li><a href="#">CTET Admit Card</a></li>
+                    {% for answer_key in answer_keys %}
+                    <li><a href="/{{ answer_key.slug }}">{{ answer_key.title }}</a></li>
+                    {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="#" class="view-more-btn">View More →</a>
+                <a href="/answer-keys" class="view-more-btn">View All Answer Keys →</a>
             </div>
         </div>
 
@@ -207,62 +203,13 @@
             <div class="sarkari-box">
                 <div class="sarkari-header">Documents Verification</div>
                 <ul class="sarkari-list">
-                    <li><a href="#">CRPF Constable Tradesmen Online Form 2026</a></li>
-                    <li><a href="#">Railway भर्ती 2025 Apply</a></li>
-                    <li><a href="#">UP Scholarship Form</a></li>
-                    <li><a href="#">Bank PO Online Form</a></li>
+                    {% for document_verification in document_verifications %}
+                    <li><a href="/{{ document_verification.slug }}">{{ document_verification.title }}</a></li>
+                    {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="#" class="view-more-btn">View More →</a>
+                <a href="/documents-verification" class="view-more-btn">View More →</a>
             </div>
-        </div>
-
-    </div>
-    <div class="row g-3 mt-2">
-        <!-- Result -->
-        <div class="col-12 col-md-4">
-            <div class="sarkari-box">
-                <div class="sarkari-header">Syllabus</div>
-                <ul class="sarkari-list">
-                    <li><a href="#">UP Board Class 10th / 12th Syllabus 2026</a></li>
-                    <li><a href="#">SSC GD Syllabus 2025</a></li>
-                    <li><a href="#">Railway Group D Syllabus</a></li>
-                    <li><a href="#">UP Police Syllabus 2025</a></li>
-                </ul>
-                <!-- View More -->
-                <a href="#" class="view-more-btn">View More →</a>
-            </div>
-        </div>
-
-        <!-- Admit Card -->
-        <div class="col-12 col-md-4">
-            <div class="sarkari-box">
-                <div class="sarkari-header">Answer Keys</div>
-                <ul class="sarkari-list">
-                    <li><a href="#">Bihar BPSC Stenographer New Exam Date 2026</a></li>
-                    <li><a href="#">SSC GD Admit Card</a></li>
-                    <li><a href="#">UP Police Admit Card</a></li>
-                    <li><a href="#">CTET Admit Card</a></li>
-                </ul>
-                <!-- View More -->
-                <a href="#" class="view-more-btn">View More →</a>
-            </div>
-        </div>
-
-        <!-- Top Online Form -->
-        <div class="col-12 col-md-4">
-            <div class="sarkari-box">
-                <div class="sarkari-header">Documents Verification</div>
-                <ul class="sarkari-list">
-                    <li><a href="#">CRPF Constable Tradesmen Online Form 2026</a></li>
-                    <li><a href="#">Railway भर्ती 2025 Apply</a></li>
-                    <li><a href="#">UP Scholarship Form</a></li>
-                    <li><a href="#">Bank PO Online Form</a></li>
-                </ul>
-                <!-- View More -->
-                <a href="#" class="view-more-btn">View More →</a>
-            </div>
-
         </div>
 
     </div>
@@ -332,7 +279,7 @@
 
 
 <div class="container my-5">
-    <div class="info-section text-center">
+    <div class="info-section">
         <h2 class="info-title">What Information Does SarkariJobsFind.com Provide?</h2>
         <p class="info-subtitle">
             We bring all important सरकारी updates in one place to help you stay ahead.
@@ -398,12 +345,8 @@
 <!-- FAQs -->
 {% include 'partials/faqs.html' %}
 {% include 'partials/disclaimer.html' %}
-
-
-
 {% endblock %}
 
-
 {% block extra_scripts %}
-<script src="{% static 'jobs/js/home.js' %}"></script>
+<!-- <script src="{% static 'jobs/js/home.js' %}"></script> -->
 {% endblock %}
