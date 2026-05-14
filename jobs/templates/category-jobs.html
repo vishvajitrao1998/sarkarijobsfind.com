@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+
+<title>SarkariJobsFind.com - {{ category.name }}</title>
+
+<link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row g-3">
+
+        <!-- Result -->
+        <div class="col-lg-8 offset-lg-2 mt-5">
+            <div
+                style="display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);">
+                <span class="breadcrumb-link" onclick="goToHome()">← Go to Home</span> <span>/</span> <span>{{ category.name }}</span>
+            </div>
+            <div class="sarkari-box">
+                <div class="sarkari-header">{{ category.name }}</div>
+                <ul class="sarkari-list">
+                    {% for job in jobs %}
+                    <li><a href="/{{ job.slug }}">{{ job.title }}</a></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- FAQs -->
+{% include 'partials/faqs.html' %}
+{% include 'partials/disclaimer.html' %}
+{% endblock %}
+
+{% block extra_scripts %}
+<!-- <script src="{% static 'jobs/js/home.js' %}"></script> -->
+
+<script>
+    function goToHome() {
+        window.location.href = '/';
+    }
+</script>
+{% endblock %}

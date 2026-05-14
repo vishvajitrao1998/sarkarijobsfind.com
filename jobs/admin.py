@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Job, JobWidget, Category, Organization, JobLink, SocialLink, SEOSetting)
+from .models import (Contact, Job, JobWidget, Category, Organization, JobLink, SocialLink, SEOSetting)
 
 
 admin.site.site_header = "SarkariJobsFind.com"      # Text in the large <h1> header
@@ -85,4 +85,10 @@ class JobWidgetAdmin(admin.ModelAdmin):
 
     def get_job_title(self, obj):
         return obj.job.title
+    
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'email')
+    ordering = ['-created_at']
     

@@ -25,7 +25,7 @@ h6 {
   --text-secondary: #64748b;
   --border-color: #e2e8f0;
   --accent: #f59e0b;
-  --accent-hover: #d97706;
+  --accent-hover: #8c0101;
   --single-job-color: #8c0101;
   --text-color: black;
 }
@@ -301,6 +301,18 @@ body {
   transition: all 0.3s;
 }
 
+.navbar-brand {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.navbar-brand:hover {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 22px;
+}
+
 #app-root {
   height: 100%;
   overflow-y: auto;
@@ -322,6 +334,26 @@ body {
   color: white;
   padding: 2rem 0;
   border-radius: 1rem;
+  position: relative;
+}
+
+.shares-btn {
+  position: absolute;
+  /* background: linear-gradient(135deg, #f59e0b, #d97706); */
+  color: white;
+  font-size: 22px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  bottom: 15px;
+  right: 15px;
+}
+
+.social-icons a {
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
 }
 
 .job-meta-item {
@@ -434,6 +466,18 @@ body {
   font-weight: 600;
 }
 
+.generic-button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
 .share-btn:hover {
   background: var(--accent);
   color: white;
@@ -523,7 +567,7 @@ a {
   height: 95px;
   text-align: center;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   color: #fff;
   border-radius: 2px;
   text-decoration: none;
@@ -684,7 +728,7 @@ a {
   cursor: pointer;
   transition: all 0.3s;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   gap: 8px;
   text-decoration: none;
@@ -784,7 +828,7 @@ a {
 
 .why-title {
   font-weight: 700;
-  /* color: #b30000; */
+  color: #ab183d;;
 }
 
 .why-subtitle {
@@ -826,7 +870,7 @@ a {
 
 .info-title {
   font-weight: 700;
-  color: #b30000;
+  color: #ab183d;;
 }
 
 .info-subtitle {
@@ -835,7 +879,6 @@ a {
 }
 
 .info-card {
-  background: #fff;
   border: 1px solid #eee;
   border-radius: 8px;
   padding: 20px;

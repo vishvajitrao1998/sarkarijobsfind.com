@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+
+<title>SarkariJobsFind.com - Your Gateway to Government Jobs</title>
+
+<link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
+
+<style>
+
+    .privacy-policy-section {
+        font-family: Arial, sans-serif;
+    }
+
+    .policy-header h1 {
+        font-size: 3rem;
+        /* color: #111827; */
+    }
+
+    .policy-short-desc {
+        max-width: 850px;
+        margin: auto;
+        color: #6b7280;
+        line-height: 1.8;
+    }
+
+    .policy-card {
+        background: var(--bg-card);
+        border-radius: 24px;
+        padding: 50px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    }
+
+    .policy-block {
+        margin-bottom: 40px;
+    }
+
+    .policy-block:last-child {
+        margin-bottom: 0;
+    }
+
+    .policy-block h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin-bottom: 16px;
+    }
+
+    .policy-block p {
+        color: #4b5563;
+        line-height: 1.9;
+        margin-bottom: 15px;
+    }
+
+    .policy-block ul {
+        padding-left: 20px;
+    }
+
+    .policy-block ul li {
+        margin-bottom: 10px;
+        color: #4b5563;
+        line-height: 1.7;
+    }
+
+    @media(max-width:768px) {
+
+        .policy-header h1 {
+            font-size: 2.2rem;
+        }
+
+        .policy-card {
+            padding: 30px 20px;
+        }
+
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+<section class="privacy-policy-section py-5">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="policy-header text-center mb-5">
+            <h1 class="fw-bold">Privacy Policy</h1>
+
+            <p class="mt-3">
+                Effective Date: 14 May 2026
+            </p>
+
+            <p class="policy-short-desc">
+                At <strong>SarkariJobsFind.com</strong>, we value your privacy and
+                are committed to protecting your personal information. This Privacy
+                Policy explains how we collect, use, store, and protect your data
+                when you use our website.
+            </p>
+        </div>
+
+        <!-- Policy Content -->
+        <div class="policy-card">
+
+            <div class="policy-block">
+                <h3>1. Information We Collect</h3>
+
+                <p>
+                    We may collect limited information such as your name, email
+                    address, IP address, browser type, device information,
+                    and website usage data when you interact with our platform.
+                </p>
+
+                <ul>
+                    <li>Contact form submissions</li>
+                    <li>Newsletter subscriptions</li>
+                    <li>Comments or feedback</li>
+                    <li>Cookies and analytics data</li>
+                </ul>
+            </div>
+
+            <div class="policy-block">
+                <h3>2. How We Use Your Information</h3>
+
+                <p>
+                    The collected information is used to improve website
+                    performance, provide better user experience, send important
+                    notifications, and maintain website security.
+                </p>
+
+                <ul>
+                    <li>Improve website content and usability</li>
+                    <li>Provide job updates and notifications</li>
+                    <li>Respond to user queries</li>
+                    <li>Monitor traffic and analytics</li>
+                </ul>
+            </div>
+
+            <div class="policy-block">
+                <h3>3. Cookies Policy</h3>
+
+                <p>
+                    SarkariJobsFind.com uses cookies to enhance user experience,
+                    analyze website traffic, and remember user preferences.
+                    By using our website, you consent to the use of cookies.
+                </p>
+            </div>
+
+            <div class="policy-block">
+                <h3>4. Third-Party Services</h3>
+
+                <p>
+                    We may use third-party services such as Google Analytics,
+                    advertising networks, and social media integrations that
+                    may collect certain anonymous information according to
+                    their own privacy policies.
+                </p>
+            </div>
+
+            <div class="policy-block">
+                <h3>5. Google AdSense & Advertising</h3>
+
+                <p>
+                    We may display third-party advertisements through services
+                    like Google AdSense. These advertisers may use cookies and
+                    similar technologies to show personalized ads based on your
+                    browsing activity.
+                </p>
+            </div>
+
+            <div class="policy-block">
+                <h3>6. Data Protection</h3>
+
+                <p>
+                    We implement appropriate security measures to protect your
+                    information from unauthorized access, misuse, or disclosure.
+                    However, no online platform can guarantee complete security.
+                </p>
+            </div>
+
+            <div class="policy-block">
+                <h3>7. External Links</h3>
+
+                <p>
+                    Our website may contain links to official government websites
+                    and third-party platforms. We are not responsible for the
+                    privacy practices or content of external websites.
+                </p>
+            </div>
+
+            <div class="policy-block">
+                <h3>8. Children's Privacy</h3>
+
+                <p>
+                    SarkariJobsFind.com does not knowingly collect personal
+                    information from children under the age of 13.
+                </p>
+            </div>
+
+            <div class="policy-block">
+                <h3>9. Policy Updates</h3>
+
+                <p>
+                    We may update this Privacy Policy from time to time.
+                    Changes will be posted on this page with the updated date.
+                </p>
+            </div>
+
+            <div class="policy-block">
+                <h3>10. Contact Us</h3>
+
+                <p>
+                    If you have any questions regarding this Privacy Policy,
+                    you can contact us through our official <a href="{% url 'contact' %}">contact</a> page.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}
