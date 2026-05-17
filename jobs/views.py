@@ -6,6 +6,10 @@ from .models import Category, Contact, Job
 
 def home(request):
 
+    all_jobs = Job.objects.filter(
+        is_active=True
+    ).order_by('-updated_at')
+
     featured_jobs = Job.objects.filter(
         is_active=True,
         is_featured=True
@@ -64,7 +68,8 @@ def home(request):
         'answer_keys': answer_keys,
         'document_verifications': document_verifications,
         'admission': admission,
-        "featured_jobs": featured_jobs
+        "featured_jobs": featured_jobs,
+        "jobs": all_jobs
     }
 
     return render(request, "home2.html", context)
@@ -101,6 +106,11 @@ def job_detail_view(request, slug):
         "job_wigets": job.job_wigets.all() if len(job.job_wigets.all()) else 'NA',
         "important_links": job.official_links.all() if len(job.official_links.all()) else 'NA',
         "featured_image": job.featured_image if job.featured_image else 'NA',
+
+        "meta_title": job.meta_title if job.meta_title else 'NA',
+        "meta_description": job.meta_description if job.meta_description else 'NA',
+        "keywords": job.keywords if job.keywords else 'NA',
+
         # "application_fees": job.fees.all()[0] if len(job.fees.all()) else 'NA',
         # "age_limit": job.age_limit.description if job.age_limit.description else 'NA',
         # "vacancies": job.vacancies.all() if len(job.vacancies.all()) else 'NA',

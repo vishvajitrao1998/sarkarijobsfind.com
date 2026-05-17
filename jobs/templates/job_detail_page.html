@@ -2,6 +2,16 @@
 {% load static %}
 {% block extra_head %}
 <title>SarkariJobsFind.com - {{job_info.title}}</title>
+
+<title>{{job_info.meta_title}} | SarkariJobsFind.com</title>
+<meta name="description" content={{job_info.short_description|default:"Search latest Sarkari jobs, admit cards, results,
+    answer keys, scholarships, admissions, and government exam updates across India on SarkariJobsFind.com."}}>
+<meta name="keywords" content="{{job_info.keywords|default:" Sarkari Jobs, Government Jobs, Latest Sarkari Naukri,
+    Sarkari Job Updates, Sarkari Exam Notifications, Sarkari Admit Cards, Sarkari Results, Sarkari Answer Keys, Sarkari
+    Scholarships, Sarkari Admissions"}}">
+<meta name="robots" content="index, follow">
+<meta name="author" content="SarkariJobsFind.com">
+
 <link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
 
 <style>
@@ -91,7 +101,8 @@
 <div class="container-lg px-4 py-4"><!-- Breadcrumb -->
     <div
         style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);">
-        <span class="breadcrumb-link" onclick="goToHome()">← Home</span> <span>/</span> <span id="jobBreadcrumb">{{job_info.title}}</span>
+        <span class="breadcrumb-link" onclick="goToHome()">← Home</span> <span>/</span> <span
+            id="jobBreadcrumb">{{job_info.title}}</span>
     </div>
     <div class="row">
         <div class="col-lg-10 offset-lg-1">
@@ -105,11 +116,14 @@
                         <p id="jobOrg" style="font-size: 16px; margin: 0; color: #cbd5e1;"></p>
                     </div>
 
-                    <span id="jobBadge" class="badge-hot">New</span>
+                    <button class="btn btn-primary btn-sm text-white fw-bold" onclick="copyCurrentLink()" id="copyBtn">
+                        Copy Job Link
+                    </button>
+
                 </div>
                 <div class="shares-btn mt-3 ms-3" style="color: #f59e0b;font-weight: bold;cursor: pointer;">
                     Share This
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-share" viewBox="0 0 16 16" onclick="displayShare('{{colorPalette.id}}')">
                         <path
                             d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3" />
@@ -195,7 +209,7 @@
             </div>
             {% endfor %}
             <div class="info-section">
-                <h5>Important Links</h5>
+                <h5>Important Links 🔗</h5>
                 <div class="important-links-wrapper">
 
                     {% for link in job_info.important_links %}
@@ -227,7 +241,7 @@
 
             </div>
             <div class="info-section">
-                <h5>SarkariJobsFind.com Official Handles</h5>
+                <h5>🤝 Connect with SarkariJobsFind.com to Stay Updated</h5>
                 <div class="important-links-wrapper">
 
                     {% for link in social_links %}
@@ -355,6 +369,32 @@
 <script>
     function goToHome() {
         window.location.href = '/';
+    }
+</script>
+
+<script>
+    function copyCurrentLink() {
+        navigator.clipboard.writeText(window.location.href)
+            .then(() => {
+                const btn = document.getElementById('copyBtn');
+
+                // Change text
+                btn.innerText = 'Copied';
+
+                // Optional success color
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-success');
+
+                // Restore after 2 seconds
+                setTimeout(() => {
+                    btn.innerText = 'Copy Job Link';
+                    btn.classList.remove('btn-success');
+                    btn.classList.add('btn-primary');
+                }, 2000);
+            })
+            .catch(err => {
+                console.error('Copy failed:', err);
+            });
     }
 </script>
 {% endblock %}
