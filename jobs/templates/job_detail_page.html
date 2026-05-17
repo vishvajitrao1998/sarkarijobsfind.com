@@ -110,7 +110,7 @@
                 <div class="d-flex align-items-start justify-content-between flex-nowrap mb-3">
                     <div>
                         <h1 id="jobTitle"
-                            style="font-size: 28px; font-weight: 800; margin-bottom: 8px; font-family: 'Plus Jakarta Sans', sans-serif;width: 95%;">
+                            style="font-size: 22px; font-weight: 800; margin-bottom: 8px;width: 95%;">
                             {{job_info.title}}
                         </h1>
                         <p id="jobOrg" style="font-size: 16px; margin: 0; color: #cbd5e1;"></p>
@@ -182,14 +182,15 @@
             </div>
 
             <!-- Card Start -->
+             {% if job_info.featured_image.url %}
             <div class="card image-card border-0 shadow-sm rounded-3 mb-4">
-
                 <div class="image-wrapper">
                     {% if job_info.featured_image %}
                     <img src="{{ job_info.featured_image.url }}" class="img-fluid rounded" alt="{{ job_info.title }}">
                     {% endif %}
                 </div>
             </div>
+            {% endif %}
 
             <!-- Card End -->
 

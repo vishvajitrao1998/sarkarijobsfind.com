@@ -4,18 +4,14 @@ body {
   margin: 0;
 }
 
-* {
-  font-family: 'DM Sans', sans-serif;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+/* h6 {
   font-family: 'Plus Jakarta Sans', sans-serif;
-}
+} */
 
 :root {
   --bg-main: #f8fafc;
@@ -48,6 +44,19 @@ body {
   color: var(--text-primary);
   /* transition: background 0.3s, color 0.3s;
   overflow-x: hidden; */
+}
+
+.faq-box .faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.faq-box .faq-item h5 {
+  font-weight: 700;
+  color: #b30000;
 }
 
 

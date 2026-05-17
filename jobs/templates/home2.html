@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
 
 <style>
-    
     .ticker-job {
         color: black;
         font-weight: 500;
@@ -85,6 +84,7 @@
                                         id="jobSearch">
                                 </div>
 
+
                                 <!-- Job List -->
                                 <div class="list-group" id="jobsContainer">
                                     {% for job in jobs %}
@@ -98,7 +98,7 @@
                                 </div>
 
                                 <!-- No Result -->
-                                <div class="text-center mt-4 d-none" id="noResult">
+                                <div class="text-center mt-4 d-none text-white" id="noResult">
                                     <h5>No jobs found</h5>
                                 </div>
                             </div>
@@ -132,6 +132,15 @@
                 data-lucide="x" style="width: 16px; height: 16px;"></i> Twitter </a> -->
         </div>
 
+    </div>
+
+    <div class="text-center mt-3">
+        <p class="fw-bold">👇👇 Try This Useful Tools 👇👇</p>
+
+        <div class="d-flex align-items-center justify-content-center gap-3">
+            <a href="https://www.snappycalc.com/date-time/age-calculator" class="text-decoration-none btn btn-success fw-bold">Age Calculator</a>
+            <a href="https://www.snappycalc.com/date-time/date-calculator" class="text-decoration-none btn btn-primary fw-bold">Date Calculator</a>
+        </div>
     </div>
 </div>
 
