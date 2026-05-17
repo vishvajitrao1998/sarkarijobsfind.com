@@ -48,11 +48,11 @@ class Job(models.Model):
     slug = models.SlugField(unique=True, blank=True)
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='jobs')
-    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True)
+    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True)
     states = models.ManyToManyField(State, blank=True)
 
-    short_description = models.TextField()
-    description = models.TextField()
+    short_description = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
 
     total_vacancies = models.IntegerField(null=True, blank=True)
 
@@ -61,9 +61,6 @@ class Job(models.Model):
     last_date = models.DateField(null=True, blank=True)
     exam_date = models.DateField(null=True, blank=True)
 
-    # Links
-    apply_link = models.URLField()
-    official_notification = models.URLField()
 
     # Status
     is_active = models.BooleanField(default=True)
@@ -73,9 +70,6 @@ class Job(models.Model):
     meta_title = models.CharField(max_length=255, blank=True)
     meta_description = models.TextField(blank=True)
     keywords = models.TextField(blank=True)
-
-    in_featured_list = models.BooleanField(default=False)
-    in_top_list = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -90,7 +84,7 @@ class Job(models.Model):
 
 
 class JobWidget(models.Model):
-    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='job_wigets')
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='job_widgets')
     title = models.CharField(max_length=100)  # e.g. "Application Start"
     description = RichTextField(null=True, blank=True)
     is_active = models.BooleanField(default=True)

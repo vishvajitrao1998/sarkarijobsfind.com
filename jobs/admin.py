@@ -67,11 +67,12 @@ class JobLinkAdmin(admin.ModelAdmin):
 
 @admin.register(Job)
 class JobAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
     list_display = (
             'title',
             'is_active'
         )
-    search_fields = ('name',)
+    search_fields = ('title',)
 
 
 @admin.register(JobWidget)

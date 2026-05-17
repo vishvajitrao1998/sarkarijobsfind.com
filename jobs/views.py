@@ -16,7 +16,7 @@ def home(request):
     ).order_by('-id')[:8]
 
     result_jobs = Job.objects.filter(
-        category__name='Result',
+        category__name='Results',
         is_active=True
     ).order_by('-updated_at')
 
@@ -41,13 +41,6 @@ def home(request):
         category__name='Answer Keys',
         is_active=True
     ).order_by('-updated_at')
-
-
-    documents = Job.objects.filter(
-        category__name='Documents Verification',
-        is_active=True
-    ).order_by('-updated_at')
-
 
     document_verifications = Job.objects.filter(
         category__name='Documents Verification',
@@ -103,7 +96,7 @@ def job_detail_view(request, slug):
             "updated_at": job.updated_at if job.updated_at else 'NA',
             "created_at": job.created_at if job.created_at else 'NA',
         },
-        "job_wigets": job.job_wigets.all() if len(job.job_wigets.all()) else 'NA',
+        "job_widgets": job.job_widgets.all() if len(job.job_widgets.all()) else 'NA',
         "important_links": job.official_links.all() if len(job.official_links.all()) else 'NA',
         "featured_image": job.featured_image if job.featured_image else 'NA',
 

@@ -173,7 +173,7 @@
         <!-- Result -->
         <div class="col-12 col-md-4">
             <div class="sarkari-box">
-                <div class="sarkari-header">Result</div>
+                <div class="sarkari-header">Results</div>
                 <ul class="sarkari-list">
                     {% for result in result_jobs %}
                     <li><a href="/{{ result.slug }}">{{ result.title }}</a>
@@ -186,7 +186,7 @@
                     {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="{% url 'category_jobs' 'result' %}" class="view-more-btn">
+                <a href="{% url 'category_jobs' 'results' %}" class="view-more-btn">
                     View More →
                 </a>
             </div>
@@ -202,7 +202,7 @@
                     {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="/admit-card" class="view-more-btn">View More →</a>
+                <a href="{% url 'category_jobs' 'admit-card' %}" class="view-more-btn">View More →</a>
             </div>
         </div>
 
@@ -216,7 +216,7 @@
                     {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="/latest-jobs" class="view-more-btn">View More →</a>
+                <a href="{% url 'category_jobs' 'latest-jobs' %}" class="view-more-btn">View More →</a>
             </div>
         </div>
 
@@ -232,7 +232,7 @@
                     {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="/syllabus" class="view-more-btn">View More →</a>
+                <a href="{% url 'category_jobs' 'syllabus' %}" class="view-more-btn">View More →</a>
             </div>
         </div>
 
@@ -246,7 +246,7 @@
                     {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="/answer-keys" class="view-more-btn">View All Answer Keys →</a>
+                <a href="{% url 'category_jobs' 'answer-keys' %}" class="view-more-btn">View All Answer Keys →</a>
             </div>
         </div>
 
@@ -260,7 +260,7 @@
                     {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="/documents-verification" class="view-more-btn">View More →</a>
+                <a href="{% url 'category_jobs' 'documents-verification' %}" class="view-more-btn">View More →</a>
             </div>
         </div>
 

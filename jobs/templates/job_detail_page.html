@@ -109,14 +109,14 @@
             <div class="job-header glass-card p-4 mb-4">
                 <div class="d-flex align-items-start justify-content-between flex-nowrap mb-3">
                     <div>
-                        <h1 id="jobTitle"
-                            style="font-size: 22px; font-weight: 800; margin-bottom: 8px;width: 95%;">
+                        <h1 id="jobTitle" style="font-size: 22px; font-weight: 800; margin-bottom: 8px;width: 95%;">
                             {{job_info.title}}
                         </h1>
                         <p id="jobOrg" style="font-size: 16px; margin: 0; color: #cbd5e1;"></p>
                     </div>
 
-                    <button class="btn btn-primary btn-sm text-white fw-bold text-nowrap" onclick="copyCurrentLink()" id="copyBtn">Copy Link
+                    <button class="btn btn-primary btn-sm text-white fw-bold text-nowrap" onclick="copyCurrentLink()"
+                        id="copyBtn">Copy Link
                     </button>
 
                 </div>
@@ -138,7 +138,7 @@
                             <div style="font-size: 12px; color: var(--text-secondary);">
                                 Posted Date
                             </div>
-                            <div id="postedDate" style="font-weight: 600;overflow: hidden;">{{ job_info.dates.updated_at|date:"d F Y | h:i A" }}</div>
+                            <div id="postedDate" style="font-weight: 600;overflow: hidden;">{{job_info.dates.updated_at|date:"d F Y | h:i A" }}</div>
                         </div>
                     </div>
                 </div>
@@ -179,10 +179,19 @@
                     </div>
 
                 </div>
+                <div class="text-center mt-3">
+                    <p class="fw-bold">👇👇 Try This Useful Tools 👇👇</p>
+                    <div class="d-flex align-items-center justify-content-center gap-3">
+                        <a href="https://www.snappycalc.com/date-time/age-calculator"
+                            class="text-decoration-none btn btn-success fw-bold">Age Calculator</a>
+                        <a href="https://www.snappycalc.com/date-time/date-calculator"
+                            class="text-decoration-none btn btn-primary fw-bold">Date Calculator</a>
+                    </div>
+                </div>
             </div>
 
             <!-- Card Start -->
-             {% if job_info.featured_image.url %}
+            {% if job_info.featured_image.url %}
             <div class="card image-card border-0 shadow-sm rounded-3 mb-4">
                 <div class="image-wrapper">
                     {% if job_info.featured_image %}
@@ -201,7 +210,7 @@
                 <p id="jobDescription">{{job_info.short_description}}</p>
             </div>
 
-            {% for jobInfo in job_info.job_wigets %}
+            {% for jobInfo in job_info.job_widgets %}
             <!-- Job Widgets -->
             <div class="info-section">
                 <h5>{{jobInfo.title}}</h5>
