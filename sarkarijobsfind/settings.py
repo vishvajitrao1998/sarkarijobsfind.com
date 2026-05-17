@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-g$m-3u)c^1n%ymu&wwn6i^glv07+j339bu^%xby@^4k5n*h6(c
 DEBUG = False
 
 # ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ["sarkarijobsfind.com", "www.sarkarijobsfind.com"]  # Allow all hosts (for development only)
+ALLOWED_HOSTS = ["sarkarijobsfind.com", "www.sarkarijobsfind.com"]  # Allow all hosts (for development only)
 
 
 # Application definition
