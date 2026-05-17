@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
 
 <style>
+    
     .ticker-job {
         color: black;
         font-weight: 500;
@@ -167,7 +168,7 @@
                 <ul class="sarkari-list">
                     {% for result in result_jobs %}
                     <li><a href="/{{ result.slug }}">{{ result.title }}</a>
-                    {% if result.notification_msg %}
+                        {% if result.notification_msg %}
                         <small class="fw-bold">| {{ result.notification_msg }}</small>
                         {% else %}
 
@@ -341,7 +342,34 @@
                 </div>
             </div>
 
+            <h3 class="why-title">SarkariJobsFind.com provides the following information:</h3>
+            <ul class="ms-5">
+                <li>Latest Sarkari Result updates for all major government exams</li>
+                <li>Daily सरकारी नौकरी notifications across India</li>
+                <li>Fast updates for Admit Card, Answer Key, and Results</li>
+                <li>Direct links to official government websites</li>
+                <li>Railway, SSC, UPSC, Banking, Police, Defence, and Teaching jobs</li>
+                <li>Central Government and State Government job alerts</li>
+                <li>Easy-to-understand job details and eligibility information</li>
+                <li>Online Form updates with important dates</li>
+                <li>Exam syllabus, selection process, and age limit details</li>
+                <li>Mobile-friendly and fast-loading website experience</li>
+                <li>Free access to all government job information</li>
+                <li>Regular updates for scholarship, admissions, and entrance exams</li>
+                <li>Instant notifications through WhatsApp and Telegram channels</li>
+                <li>Coverage for 10th pass, 12th pass, Graduate, and Diploma jobs</li>
+                <li>State-wise Sarkari Naukri updates for UP, Bihar, MP, Rajasthan, Delhi, and more</li>
+                <li>Important government exam dates and recruitment schedules</li>
+                <li>Trusted source for latest Sarkari Exam news and updates</li>
+                <li>Simple and clean interface for quick job searching</li>
+            </ul>
+
         </div>
+
+
+
+
+
     </div>
 </div>
 

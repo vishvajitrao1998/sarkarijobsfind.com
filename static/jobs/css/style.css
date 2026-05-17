@@ -335,6 +335,7 @@ body {
   padding: 2rem 0;
   border-radius: 1rem;
   position: relative;
+  width: 95%;
 }
 
 .shares-btn {
@@ -564,12 +565,12 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 95px;
+  /* height: 95px; */
   text-align: center;
   font-weight: 600;
   font-size: 20px;
   color: #fff;
-  border-radius: 2px;
+  border-radius: 10px;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   padding: 10px;
@@ -904,4 +905,34 @@ a {
 .info-card p {
   font-size: 14px;
   color: #666;
+}
+
+
+
+
+/* Dark mode tables */
+.dark-mode table {
+    color: #e5e7eb !important;
+    background-color: #1f2937 !important;
+    border-color: #374151 !important;
+}
+
+.dark-mode table th,
+.dark-mode table td {
+    background-color: #1f2937 !important;
+    color: #e5e7eb !important;
+    border: 1px solid #374151 !important;
+}
+
+.dark-mode table thead th {
+    background-color: #111827 !important;
+    color: #fff !important;
+}
+
+.dark-mode .table-striped tbody tr:nth-of-type(odd) td {
+    background-color: #273244 !important;
+}
+
+.dark-mode .table-hover tbody tr:hover td {
+    background-color: #374151 !important;
 }
