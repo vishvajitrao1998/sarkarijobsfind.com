@@ -51,8 +51,8 @@ class Job(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True)
     states = models.ManyToManyField(State, blank=True)
 
-    short_description = models.TextField(null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
+    description = RichTextField(null=True, blank=True)
+    description = RichTextField(null=True, blank=True)
 
     total_vacancies = models.IntegerField(null=True, blank=True)
 
