@@ -24,6 +24,7 @@ h5,
   --accent-hover: #8c0101;
   --single-job-color: #8c0101;
   --text-color: black;
+  --border-color-post: #ab183d;
 }
 
 .dark-mode {
@@ -35,6 +36,7 @@ h5,
   --border-color: #334155;
   --single-job-color: #fbbf24;
   --text-color: wheat;
+  --border-color-post: #ab183d;
 }
 
 
@@ -44,6 +46,15 @@ body {
   color: var(--text-primary);
   /* transition: background 0.3s, color 0.3s;
   overflow-x: hidden; */
+}
+
+.custom-table {
+  border: 1px solid var(--border-color-post) !important;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid var(--border-color-post) !important;
 }
 
 .faq-box .faq-item {
@@ -361,9 +372,9 @@ body {
 }
 
 .social-icons a {
-    font-size: 24px;
-    margin: 0 10px;
-    text-decoration: none;
+  font-size: 24px;
+  margin: 0 10px;
+  text-decoration: none;
 }
 
 .job-meta-item {
@@ -396,6 +407,7 @@ body {
 .link-bg-color {
   background-color: #8c0101;
 }
+
 .link-bg-color:hover {
   background-color: #8c0101;
 }
@@ -588,7 +600,8 @@ a {
 
 .job-card:hover {
   /* will-change: transform; */
-  transform: translateY(-2px);   /* instead of -8px */
+  transform: translateY(-2px);
+  /* instead of -8px */
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
   /* color: #fff; */
 }
@@ -617,9 +630,11 @@ a {
 .bg6 {
   background: #16a085;
 }
+
 .bg7 {
   background: #d97706;
 }
+
 .bg8 {
   background: #25D366;
 }
@@ -666,7 +681,7 @@ a {
 }
 
 .sarkari-box {
-  
+
   border: 1px solid #ab183d;
   /* background: #fff; */
   position: relative;
@@ -838,7 +853,8 @@ a {
 
 .why-title {
   font-weight: 700;
-  color: #ab183d;;
+  color: #ab183d;
+  ;
 }
 
 .why-subtitle {
@@ -880,7 +896,8 @@ a {
 
 .info-title {
   font-weight: 700;
-  color: #ab183d;;
+  color: #ab183d;
+  ;
 }
 
 .info-subtitle {
@@ -898,7 +915,7 @@ a {
 
 .info-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .info-icon {
@@ -920,28 +937,28 @@ a {
 
 
 /* Dark mode tables */
-.dark-mode table {
-    color: #e5e7eb !important;
-    background-color: #1f2937 !important;
-    border-color: #374151 !important;
-}
+/* .dark-mode table {
+  color: #e5e7eb !important;
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+} */
 
 .dark-mode table th,
 .dark-mode table td {
-    background-color: #1f2937 !important;
-    color: #e5e7eb !important;
-    border: 1px solid #374151 !important;
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+  /* border: 1px solid #374151 !important; */
 }
 
 .dark-mode table thead th {
-    background-color: #111827 !important;
-    color: #fff !important;
+  background-color: #111827 !important;
+  color: #fff !important;
 }
 
 .dark-mode .table-striped tbody tr:nth-of-type(odd) td {
-    background-color: #273244 !important;
+  background-color: #273244 !important;
 }
 
 .dark-mode .table-hover tbody tr:hover td {
-    background-color: #374151 !important;
+  background-color: #374151 !important;
 }

@@ -225,14 +225,14 @@
         <!-- Result -->
         <div class="col-12 col-md-4">
             <div class="sarkari-box">
-                <div class="sarkari-header">Syllabus</div>
+                <div class="sarkari-header">Admissions</div>
                 <ul class="sarkari-list">
-                    {% for syllabus_job in syllabus %}
-                    <li><a href="/{{ syllabus_job.slug }}">{{ syllabus_job.title }}</a></li>
+                    {% for admission in admissions %}
+                    <li><a href="/{{ admission.slug }}">{{ admission.title }}</a></li>
                     {% endfor %}
                 </ul>
                 <!-- View More -->
-                <a href="{% url 'category_jobs' 'syllabus' %}" class="view-more-btn">View More →</a>
+                <a href="{% url 'category_jobs' 'admissions' %}" class="view-more-btn">View More →</a>
             </div>
         </div>
 

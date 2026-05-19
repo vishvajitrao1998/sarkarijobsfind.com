@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
 
 <style>
+    
+
     .image-card {
         border-radius: 20px;
         transition: all 0.35s ease;
@@ -112,8 +114,8 @@
                         <p id="jobOrg" style="font-size: 16px; margin: 0; color: #cbd5e1;"></p>
                     </div>
 
-                    <button class="btn btn-primary btn-sm text-white fw-bold text-nowrap mb-3" onclick="copyCurrentLink()"
-                        id="copyBtn">Copy Link
+                    <button class="btn btn-primary btn-sm text-white fw-bold text-nowrap mb-3"
+                        onclick="copyCurrentLink()" id="copyBtn">Copy Link
                     </button>
 
                 </div>
@@ -135,7 +137,8 @@
                             <div style="font-size: 12px; color: var(--text-secondary);">
                                 Post Date / Update:
                             </div>
-                            <div id="postedDate" style="font-weight: 600;overflow: hidden;">{{job_info.dates.updated_at|date:"d F Y | h:i A" }}</div>
+                            <div id="postedDate" style="font-weight: 600;overflow: hidden;">
+                                {{job_info.dates.updated_at|date:"d F Y | h:i A" }}</div>
                         </div>
                     </div>
                 </div>
@@ -203,7 +206,7 @@
 
             <!-- About Job -->
             <div class="info-section">
-                <h5>About This Job</h5>
+                <h5>Short Description</h5>
                 <p id="jobDescription">{{job_info.short_description|safe}}</p>
             </div>
 

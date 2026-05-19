@@ -60,7 +60,7 @@ def home(request):
         'syllabus': syllabus,
         'answer_keys': answer_keys,
         'document_verifications': document_verifications,
-        'admission': admission,
+        'admissions': admission,
         "featured_jobs": featured_jobs,
         "jobs": all_jobs
     }
