@@ -52,7 +52,6 @@ class Job(models.Model):
     states = models.ManyToManyField(State, blank=True)
 
     description = RichTextField(null=True, blank=True)
-    description = RichTextField(null=True, blank=True)
 
     total_vacancies = models.IntegerField(null=True, blank=True)
 

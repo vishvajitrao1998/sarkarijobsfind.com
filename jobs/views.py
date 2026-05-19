@@ -76,7 +76,7 @@ def job_detail_view(request, slug):
     job = get_object_or_404(
         Job.objects.select_related('category')
         .prefetch_related(
-            'job_wigets'
+            'job_widgets'
         ),
         slug=slug,
         is_active=True
@@ -86,7 +86,7 @@ def job_detail_view(request, slug):
         "title": job.title,
         "slug": job.slug,
         "category": job.category.name if job.category else None,
-        "short_description": job.short_description if job.short_description else 'NA',
+        "short_description": job.description if job.description else 'NA',
         "total_vacancies": job.total_vacancies if job.total_vacancies else 'NA',
         "description": job.description if job.description else 'NA',
         "dates": {
@@ -96,8 +96,8 @@ def job_detail_view(request, slug):
             "updated_at": job.updated_at if job.updated_at else 'NA',
             "created_at": job.created_at if job.created_at else 'NA',
         },
-        "job_widgets": job.job_widgets.all() if len(job.job_widgets.all()) else 'NA',
-        "important_links": job.official_links.all() if len(job.official_links.all()) else 'NA',
+        "job_widgets": job.job_widgets.all(),
+        "important_links": job.official_links.all(),
         "featured_image": job.featured_image if job.featured_image else 'NA',
 
         "meta_title": job.meta_title if job.meta_title else 'NA',

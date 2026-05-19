@@ -107,15 +107,15 @@
     <div class="row">
         <div class="col-lg-10 offset-lg-1">
             <div class="job-header glass-card p-4 mb-4">
-                <div class="d-flex align-items-start justify-content-between flex-nowrap mb-3">
+                <div class="d-flex align-items-start justify-content-between mb-3">
                     <div>
-                        <h1 id="jobTitle" style="font-size: 22px; font-weight: 800; margin-bottom: 8px;width: 95%;">
+                        <h1 id="jobTitle" style="font-size: 22px; font-weight: 800; margin-bottom: 8px;width: auto;">
                             {{job_info.title}}
                         </h1>
                         <p id="jobOrg" style="font-size: 16px; margin: 0; color: #cbd5e1;"></p>
                     </div>
 
-                    <button class="btn btn-primary btn-sm text-white fw-bold text-nowrap" onclick="copyCurrentLink()"
+                    <button class="btn btn-primary btn-sm text-white fw-bold text-nowrap mb-3" onclick="copyCurrentLink()"
                         id="copyBtn">Copy Link
                     </button>
 
@@ -136,7 +136,7 @@
                             style="width: 16px; height: 16px; color: var(--accent);"></i>
                         <div>
                             <div style="font-size: 12px; color: var(--text-secondary);">
-                                Posted Date
+                                Post Date / Update:
                             </div>
                             <div id="postedDate" style="font-weight: 600;overflow: hidden;">{{job_info.dates.updated_at|date:"d F Y | h:i A" }}</div>
                         </div>
@@ -207,7 +207,7 @@
             <!-- About Job -->
             <div class="info-section">
                 <h5>About This Job</h5>
-                <p id="jobDescription">{{job_info.short_description}}</p>
+                <p id="jobDescription">{{job_info.short_description|safe}}</p>
             </div>
 
             {% for jobInfo in job_info.job_widgets %}

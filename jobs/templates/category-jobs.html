@@ -24,7 +24,12 @@
                 <div class="sarkari-header">{{ category.name }}</div>
                 <ul class="sarkari-list">
                     {% for job in jobs %}
-                    <li><a href="/{{ job.slug }}">{{ job.title }}</a></li>
+                    <li><a href="/{{ job.slug }}">{{ job.title }}
+
+                        {% if job.notification_msg %}
+                            | {{ job.notification_msg }}
+                        {% endif %}
+                    </a></li>
                     {% endfor %}
                 </ul>
 
