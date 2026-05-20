@@ -222,8 +222,8 @@
                 <ul class="sarkari-list">
                     {% for latest_job in latest_jobs %}
                     <li><a href="/{{ latest_job.slug }}">{{ latest_job.title }}</a>
-                    {% if result.notification_msg %}
-                        <small class="fw-bold">| {{ result.notification_msg }}</small>
+                    {% if latest_job.notification_msg %}
+                        <small class="fw-bold">| {{ latest_job.notification_msg }}</small>
                         {% else %}
 
                         {% endif %}</li>
@@ -243,8 +243,8 @@
                 <ul class="sarkari-list">
                     {% for admission in admissions %}
                     <li><a href="/{{ admission.slug }}">{{ admission.title }}</a>
-                    {% if result.notification_msg %}
-                        <small class="fw-bold">| {{ result.notification_msg }}</small>
+                    {% if admission.notification_msg %}
+                        <small class="fw-bold">| {{ admission.notification_msg }}</small>
                         {% else %}
 
                         {% endif %}</li>
@@ -262,8 +262,8 @@
                 <ul class="sarkari-list">
                     {% for answer_key in answer_keys %}
                     <li><a href="/{{ answer_key.slug }}">{{ answer_key.title }}</a>
-                    {% if result.notification_msg %}
-                        <small class="fw-bold">| {{ result.notification_msg }}</small>
+                    {% if answer_key.notification_msg %}
+                        <small class="fw-bold">| {{ answer_key.notification_msg }}</small>
                         {% else %}
 
                         {% endif %}</li>
@@ -281,8 +281,8 @@
                 <ul class="sarkari-list">
                     {% for document_verification in document_verifications %}
                     <li><a href="/{{ document_verification.slug }}">{{ document_verification.title }}</a>
-                    {% if result.notification_msg %}
-                        <small class="fw-bold">| {{ result.notification_msg }}</small>
+                    {% if document_verification.notification_msg %}
+                        <small class="fw-bold">| {{ document_verification.notification_msg }}</small>
                         {% else %}
 
                         {% endif %}</li>
