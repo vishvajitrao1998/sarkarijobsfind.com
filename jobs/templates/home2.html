@@ -150,13 +150,15 @@
     <div class="row g-2">
         {% for job in featured_jobs %}
         <div class="col-6 col-md-3">
-            <a href="/{{ job.slug }}" class="job-card bg{{ forloop.counter }}">
-                {{ job.title }} {% if job.notification_msg %}
-                | {{ job.notification_msg }}
-                {% else %}
+            <div class="job-card bg{{ forloop.counter }}">
+                <a href="/{{ job.slug }}">
+                    {{ job.title }}
 
-                {% endif %}
-            </a>
+                    {% if job.notification_msg %}
+                        | {{ job.notification_msg }}
+                    {% endif %}
+                </a>
+            </div>
 
         </div>
         {% endfor %}

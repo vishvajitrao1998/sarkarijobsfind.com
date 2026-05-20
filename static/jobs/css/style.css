@@ -582,20 +582,26 @@ a {
   transform: translateZ(0);
 }
 
+
+
+
+
 .job-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* height: 95px; */
-  text-align: center;
-  font-weight: 600;
-  font-size: 20px;
-  color: #fff;
+  min-height: 95px;
   border-radius: 10px;
-  text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   padding: 10px;
+  text-align: center;
+}
 
+.job-card a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  width: 100%;
 }
 
 .job-card:hover {
