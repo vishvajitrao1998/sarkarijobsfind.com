@@ -84,6 +84,7 @@ def job_detail_view(request, slug):
 
     data = {
         "title": job.title,
+        "notification_msg": job.notification_msg,
         "slug": job.slug,
         "category": job.category.name if job.category else None,
         "short_description": job.description if job.description else 'NA',

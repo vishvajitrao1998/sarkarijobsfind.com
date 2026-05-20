@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block extra_head %}
-<title>SarkariJobsFind.com - {{job_info.title}}</title>
+
 
 <title>{{job_info.meta_title}} | SarkariJobsFind.com</title>
 <meta name="description" content={{job_info.meta_description}}>
@@ -110,6 +110,11 @@
                     <div>
                         <h1 id="jobTitle" style="font-size: 22px; font-weight: 800; margin-bottom: 8px;width: auto;">
                             {{job_info.title}}
+                             {% if job_info.notification_msg %}
+                                <small class="fw-bold">| {{ job_info.notification_msg }}</small>
+                                {% else %}
+
+                                {% endif %}</li>
                         </h1>
                         <p id="jobOrg" style="font-size: 16px; margin: 0; color: #cbd5e1;"></p>
                     </div>
