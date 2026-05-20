@@ -200,7 +200,14 @@
                 <div class="sarkari-header">Admit Card</div>
                 <ul class="sarkari-list">
                     {% for admit_card in admit_cards %}
-                    <li><a href="/{{ admit_card.slug }}">{{ admit_card.title }}</a></li>
+                    <li><a href="/{{ admit_card.slug }}">{{ admit_card.title }}</a>
+                    
+                    {% if result.notification_msg %}
+                        <small class="fw-bold">| {{ result.notification_msg }}</small>
+                        {% else %}
+
+                        {% endif %}
+                    </li>
                     {% endfor %}
                 </ul>
                 <!-- View More -->
@@ -214,7 +221,12 @@
                 <div class="sarkari-header">Top Online Form</div>
                 <ul class="sarkari-list">
                     {% for latest_job in latest_jobs %}
-                    <li><a href="/{{ latest_job.slug }}">{{ latest_job.title }}</a></li>
+                    <li><a href="/{{ latest_job.slug }}">{{ latest_job.title }}</a>
+                    {% if result.notification_msg %}
+                        <small class="fw-bold">| {{ result.notification_msg }}</small>
+                        {% else %}
+
+                        {% endif %}</li>
                     {% endfor %}
                 </ul>
                 <!-- View More -->
@@ -230,7 +242,12 @@
                 <div class="sarkari-header">Admissions</div>
                 <ul class="sarkari-list">
                     {% for admission in admissions %}
-                    <li><a href="/{{ admission.slug }}">{{ admission.title }}</a></li>
+                    <li><a href="/{{ admission.slug }}">{{ admission.title }}</a>
+                    {% if result.notification_msg %}
+                        <small class="fw-bold">| {{ result.notification_msg }}</small>
+                        {% else %}
+
+                        {% endif %}</li>
                     {% endfor %}
                 </ul>
                 <!-- View More -->
@@ -244,7 +261,12 @@
                 <div class="sarkari-header">Answer Keys</div>
                 <ul class="sarkari-list">
                     {% for answer_key in answer_keys %}
-                    <li><a href="/{{ answer_key.slug }}">{{ answer_key.title }}</a></li>
+                    <li><a href="/{{ answer_key.slug }}">{{ answer_key.title }}</a>
+                    {% if result.notification_msg %}
+                        <small class="fw-bold">| {{ result.notification_msg }}</small>
+                        {% else %}
+
+                        {% endif %}</li>
                     {% endfor %}
                 </ul>
                 <!-- View More -->
@@ -258,7 +280,12 @@
                 <div class="sarkari-header">Documents Verification</div>
                 <ul class="sarkari-list">
                     {% for document_verification in document_verifications %}
-                    <li><a href="/{{ document_verification.slug }}">{{ document_verification.title }}</a></li>
+                    <li><a href="/{{ document_verification.slug }}">{{ document_verification.title }}</a>
+                    {% if result.notification_msg %}
+                        <small class="fw-bold">| {{ result.notification_msg }}</small>
+                        {% else %}
+
+                        {% endif %}</li>
                     {% endfor %}
                 </ul>
                 <!-- View More -->
