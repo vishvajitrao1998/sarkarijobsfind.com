@@ -202,8 +202,8 @@
                     {% for admit_card in admit_cards %}
                     <li><a href="/{{ admit_card.slug }}">{{ admit_card.title }}</a>
                     
-                    {% if result.notification_msg %}
-                        <small class="fw-bold">| {{ result.notification_msg }}</small>
+                    {% if admit_card.notification_msg %}
+                        <small class="fw-bold">| {{ admit_card.notification_msg }}</small>
                         {% else %}
 
                         {% endif %}
