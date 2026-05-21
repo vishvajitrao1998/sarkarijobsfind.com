@@ -43,7 +43,7 @@ def home(request):
     ).order_by('-updated_at')
 
     document_verifications = Job.objects.filter(
-        category__name='Documents Verification',
+        category__name='Document Verification',
         is_active=True
     ).order_by('-updated_at')
 
