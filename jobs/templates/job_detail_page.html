@@ -222,8 +222,9 @@
                 <div id="importantDates">{{jobInfo.description|safe}}</div>
             </div>
             {% endfor %}
+            {% if job_info.important_links.count > 0 %}
             <div class="info-section">
-                {% if job_info.important_links.count > 0 %}
+                
                 <h5>Important Links 🔗</h5>
                 <div class="important-links-wrapper">
 
@@ -251,11 +252,12 @@
                     {% endfor %}
 
                 </div>
-                {% endif %}
+                
 
 
 
             </div>
+            {% endif %}
             <div class="info-section">
                 <h5>🤝 Connect with SarkariJobsFind.com to Stay Updated</h5>
                 <div class="important-links-wrapper">
