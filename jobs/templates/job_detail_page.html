@@ -223,6 +223,7 @@
             </div>
             {% endfor %}
             <div class="info-section">
+                {% if job_info.important_links.count > 0 %}
                 <h5>Important Links 🔗</h5>
                 <div class="important-links-wrapper">
 
@@ -250,6 +251,7 @@
                     {% endfor %}
 
                 </div>
+                {% endif %}
 
 
 
