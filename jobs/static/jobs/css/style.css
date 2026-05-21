@@ -770,7 +770,7 @@ a {
   cursor: pointer;
   transition: all 0.3s;
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
   gap: 8px;
   text-decoration: none;
