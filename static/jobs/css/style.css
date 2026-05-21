@@ -333,6 +333,17 @@ body {
   font-size: 22px;
 }
 
+.navbar-brand:active {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 22px;
+}
+.navbar-brand:focus {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 22px;
+}
+
 #app-root {
   height: 100%;
   overflow-y: auto;
