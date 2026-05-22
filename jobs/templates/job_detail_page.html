@@ -4,13 +4,29 @@
 
 
 <title>{{job_info.meta_title}} | SarkariJobsFind.com</title>
-<meta name="description" content={{job_info.meta_description}}>
-<meta name="keywords" content={{job_info.keywords}}>
+<meta name="description" content="{{job_info.meta_description}}">
+<meta name="keywords" content="{{job_info.keywords}}">
 <meta name="robots" content="index, follow">
 <meta name="author" content="SarkariJobsFind.com">
 
 <link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
 
+
+
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ job_info.title }}">
+<meta property="og:description" content="{{ job_info.meta_description }}">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ job_info.featured_image.url }}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:site_name" content="SarkariJobsFind.com">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ job_info.title }}">
+<meta name="twitter:description" content="{{ job_info.meta_description }}">
+<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ job_info.featured_image.url }}">
 <style>
     
 
