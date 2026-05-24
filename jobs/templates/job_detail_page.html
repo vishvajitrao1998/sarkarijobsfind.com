@@ -257,6 +257,7 @@
                         </div>
 
                         <!-- Button -->
+                        {% if not link.note %}
                         <div class="important-link-btn">
                             <a href="{{ link.url }}" target="_blank" class="btn btn-sm text-white link-bg-color">
                                 Click Here
@@ -264,6 +265,11 @@
                             </a>
                         </div>
 
+                        {% else %}
+                        <div class="important-link-note">
+                            {{ link.note }}
+                        </div>
+                        {% endif %}
                     </div>
                     {% empty %}
                     <div class="text-center py-3">

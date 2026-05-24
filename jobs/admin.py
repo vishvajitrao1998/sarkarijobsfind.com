@@ -73,6 +73,7 @@ class JobAdmin(admin.ModelAdmin):
             'is_active'
         )
     search_fields = ('title',)
+    list_filter = ('title', 'is_active', 'is_featured')
 
 
 @admin.register(JobWidget)
