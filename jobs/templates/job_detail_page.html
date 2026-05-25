@@ -443,11 +443,18 @@
 </script>
 <script>
     let number = Number(document.getElementById("vacancies").innerText);
+    console.log(number);
     // Format Number
     let formattedNumber = number.toLocaleString('en-IN');
 
+    if (isNaN(number)) {
+        document.getElementById("vacancies").innerHTML = "NA";
+    }
+    else {
     document.getElementById("vacancies").innerHTML = formattedNumber;
-
     console.log(formattedNumber); // 11,127
+    }
+
+    
 </script>
 {% endblock %}
