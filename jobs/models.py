@@ -120,6 +120,26 @@ class JobLink(models.Model):
         return f"{self.job.title}"
 
 
+
+class JobFaqs(models.Model):
+    job = models.ForeignKey(
+        'Job',
+        on_delete=models.CASCADE,
+        related_name='job_faqs'
+    )
+    title = models.CharField(max_length=255)  # title of faq
+    faqs = RichTextField(blank=True, null=True) # faq content
+    is_active = models.BooleanField(default=False)  # is active button
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Job FAQ"
+        verbose_name_plural = "Job FAQs"
+
+    def __str__(self):
+        return f"{self.job.title}"
+
+
 class SocialLink(models.Model):
     PLATFORM_CHOICES = (
         ('whatsapp', 'WhatsApp'),

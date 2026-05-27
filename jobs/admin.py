@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Contact, Job, JobWidget, Category, Organization, JobLink, SocialLink, SEOSetting)
+from .models import (Contact, Job, JobFaqs, JobWidget, Category, Organization, JobLink, SocialLink, SEOSetting)
 
 
 admin.site.site_header = "SarkariJobsFind.com"      # Text in the large <h1> header
@@ -61,6 +61,20 @@ class JobLinkAdmin(admin.ModelAdmin):
         'title'
     )
     search_fields = ('name',)
+
+    def get_job_title(self, obj):
+        return obj.job.title
+    
+
+@admin.register(JobFaqs)
+class JobfaqAdmin(admin.ModelAdmin):
+    list_display = (
+        'get_job_title',
+        'title',
+        'is_active'
+    )
+    search_fields = ('get_job_title', 'title')
+    list_filter = ('is_active',)
 
     def get_job_title(self, obj):
         return obj.job.title

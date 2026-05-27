@@ -99,6 +99,7 @@ def job_detail_view(request, slug):
         },
         "job_widgets": job.job_widgets.all(),
         "important_links": job.official_links.all(),
+        "faqs": job.job_faqs.filter(is_active=True),
         "featured_image": job.featured_image if job.featured_image else 'NA',
 
         "meta_title": job.meta_title if job.meta_title else 'NA',
@@ -111,6 +112,7 @@ def job_detail_view(request, slug):
         # "syllabus": job.syllabus.all()[0] if len(job.syllabus.all()) else 'NA',
         # "guides": job.guides.all()[0] if len(job.guides.all()) else 'NA',
     }
+    print(job.job_faqs.all())
     return render(request, "job_detail_page.html", {'job_info': data})
 
 def category_jobs(request, slug):

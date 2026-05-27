@@ -313,6 +313,14 @@
 
                 </div>
             </div><!-- Sidebar -->
+            {% if job_info.faqs.count > 0 %}
+            <div class="info-section">
+                {% for link in job_info.faqs %}
+                <h5>{{ link.title }}</h5>
+                <div id="importantDates">{{ link.faqs|safe }}</div>
+                {% endfor %}
+            </div><!-- Sidebar -->
+            {% endif %}
         </div>
 
     </div>
