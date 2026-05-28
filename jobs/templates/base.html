@@ -4,14 +4,25 @@
 
 <head>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+
     <script>
         window.OneSignalDeferred = window.OneSignalDeferred || [];
+
         OneSignalDeferred.push(async function (OneSignal) {
+
             await OneSignal.init({
                 appId: "175a3f9f-e6d2-4a5e-9099-58de22fc27de",
+
+                notifyButton: {
+                    enable: true,
+                },
+
+                allowLocalhostAsSecureOrigin: true,
             });
+
         });
     </script>
+
     <base target="_blank">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
