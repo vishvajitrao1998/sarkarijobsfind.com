@@ -2,27 +2,11 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import TemplateView
 
 from .views import *
 
 urlpatterns = [
     path("", home, name="home"),
-    path(
-        "OneSignalSDKWorker.js",
-        TemplateView.as_view(
-            template_name="OneSignalSDKWorker.js",
-            content_type="application/javascript",
-        ),
-    ),
-
-    path(
-        "OneSignalSDKUpdaterWorker.js",
-        TemplateView.as_view(
-            template_name="OneSignalSDKUpdaterWorker.js",
-            content_type="application/javascript",
-        ),
-    ),
     path("<str:slug>", job_detail_view, name="job_detail_view"),
     path("category/<str:slug>", category_jobs, name="category_jobs"),
 
