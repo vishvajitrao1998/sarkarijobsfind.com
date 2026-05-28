@@ -64,6 +64,7 @@ class Job(models.Model):
     # Status
     is_active = models.BooleanField(default=True)
     is_featured = models.BooleanField(default=False)
+    is_new = models.BooleanField(default=False)
 
     # SEO
     meta_title = models.CharField(max_length=255, blank=True)

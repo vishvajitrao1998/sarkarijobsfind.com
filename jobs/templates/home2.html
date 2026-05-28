@@ -29,6 +29,96 @@
         font-weight: 500;
         text-decoration: none;
     }
+
+    .job-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    /* Stylish NEW Tag */
+    .new-tag {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2px 10px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        background: linear-gradient(135deg, #e80d44, #09dc09);
+        border-radius: 50px;
+        overflow: hidden;
+        box-shadow:
+            0 5px 15px rgba(255, 8, 68, 0.35),
+            inset 0 1px 1px rgba(255, 255, 255, 0.4);
+        animation: glow 2s infinite ease-in-out;
+    }
+
+    /* Shine Effect */
+    .new-tag::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -80%;
+        width: 40%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: skewX(-25deg);
+        animation: shine 2.5s infinite;
+    }
+
+    /* Small Dot */
+    .new-tag::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: #fff;
+        border-radius: 50%;
+        margin-left: 8px;
+        animation: blink 1s infinite;
+    }
+
+    @keyframes shine {
+        100% {
+            left: 140%;
+        }
+    }
+
+    @keyframes glow {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 5px 15px rgba(255, 8, 68, 0.35);
+        }
+
+        50% {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(255, 8, 68, 0.5);
+        }
+
+        100% {
+            transform: scale(1);
+            box-shadow: 0 5px 15px rgba(255, 8, 68, 0.35);
+        }
+    }
+
+    @keyframes blink {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.2;
+        }
+    }
 </style>
 
 {% endblock %}
@@ -43,9 +133,15 @@
                 <div class="ticker-strip py-2 w-100">
                     <div class="ticker-content text-sm fw-semibold text-white">
                         {% for job in featured_jobs %}
-                        <span><a href="/{{ job.slug }}" class="ticker-job">
+                        <span class="d-flex gap-2">
+                            
+                            <a href="/{{ job.slug }}" class="ticker-job">
                                 {{ job.title }}
-                            </a></span>|
+                            </a>
+                        {% if job.is_new %}
+                            <span class="new-tag">NEW</span>
+                            {% endif %}
+                        </span>|
                         {% endfor %}
 
 
@@ -128,8 +224,8 @@
             <a href="https://t.me/sarkarijobsfinddotcom" target="_blank" rel="noopener noreferrer"
                 class="social-btn telegram">
                 <i data-lucide="send" style="width: 16px; height: 16px;"></i> Telegram </a>
-            <a href="https://x.com/SarkariJobs1998" target="_blank" rel="noopener noreferrer" class="social-btn twitter"> <i
-                data-lucide="x" style="width: 16px; height: 16px;"></i> Twitter </a>
+            <a href="https://x.com/SarkariJobs1998" target="_blank" rel="noopener noreferrer"
+                class="social-btn twitter"> <i data-lucide="x" style="width: 16px; height: 16px;"></i> Twitter </a>
         </div>
 
     </div>
@@ -138,8 +234,10 @@
         <p class="fw-bold">👇👇 Try This Useful Tools 👇👇</p>
 
         <div class="d-flex align-items-center justify-content-center gap-3">
-            <a href="https://www.snappycalc.com/date-time/age-calculator" class="text-decoration-none btn btn-success fw-bold">Age Calculator</a>
-            <a href="https://www.snappycalc.com/date-time/date-calculator" class="text-decoration-none btn btn-primary fw-bold">Date Calculator</a>
+            <a href="https://www.snappycalc.com/date-time/age-calculator"
+                class="text-decoration-none btn btn-success fw-bold">Age Calculator</a>
+            <a href="https://www.snappycalc.com/date-time/date-calculator"
+                class="text-decoration-none btn btn-primary fw-bold">Date Calculator</a>
         </div>
     </div>
 </div>
@@ -153,13 +251,14 @@
             <div class="job-card bg{{ forloop.counter }}">
                 <a href="/{{ job.slug }}">
                     {{ job.title }}
-
                     {% if job.notification_msg %}
-                        | {{ job.notification_msg }}
+                    | {{ job.notification_msg }}
+                    {% endif %}
+                    {% if job.is_new %}
+                    <span class="new-tag">NEW</span>
                     {% endif %}
                 </a>
             </div>
-
         </div>
         {% endfor %}
 
@@ -178,12 +277,19 @@
                 <div class="sarkari-header">Results</div>
                 <ul class="sarkari-list">
                     {% for result in result_jobs %}
-                    <li><a href="/{{ result.slug }}">{{ result.title }}</a>
-                        {% if result.notification_msg %}
-                        <small class="fw-bold">| {{ result.notification_msg }}</small>
-                        {% else %}
+                    <li>
+                        <h3 class="job-title d-flex align-items-center gap-2">
+                            <a href="/{{ result.slug }}">{{ result.title }}
+                                {% if result.notification_msg %}
+                                <small class="fw-bold job-notification">| {{ result.notification_msg }}</small>
+                                {% else %}
+                                {% endif %}
+                            </a>
+                            {% if result.is_new %}
+                            <span class="new-tag">NEW</span>
+                            {% endif %}
+                        </h3>
 
-                        {% endif %}
                     </li>
                     {% endfor %}
                 </ul>
@@ -200,13 +306,21 @@
                 <div class="sarkari-header">Admit Card</div>
                 <ul class="sarkari-list">
                     {% for admit_card in admit_cards %}
-                    <li><a href="/{{ admit_card.slug }}">{{ admit_card.title }}</a>
-                    
-                    {% if admit_card.notification_msg %}
-                        <small class="fw-bold">| {{ admit_card.notification_msg }}</small>
-                        {% else %}
+                    <li>
+                        <h3 class="job-title d-flex align-items-center gap-2">
+                            <a href="/{{ admit_card.slug }}">{{ admit_card.title }}
+                                {% if admit_card.notification_msg %}
+                                <small class="fw-bold job-notification">| {{ admit_card.notification_msg }}</small>
+                                {% else %}
+                                {% endif %}
+                            </a>
+                            {% if admit_card.is_new %}
+                            <span class="new-tag">NEW</span>
+                            {% endif %}
 
-                        {% endif %}
+                        </h3>
+
+
                     </li>
                     {% endfor %}
                 </ul>
@@ -221,12 +335,22 @@
                 <div class="sarkari-header">Top Online Form</div>
                 <ul class="sarkari-list">
                     {% for latest_job in latest_jobs %}
-                    <li><a href="/{{ latest_job.slug }}">{{ latest_job.title }}</a>
-                    {% if latest_job.notification_msg %}
-                        <small class="fw-bold">| {{ latest_job.notification_msg }}</small>
-                        {% else %}
+                    <li>
+                        <h3 class="job-title d-flex align-items-center gap-2">
+                            <a href="/{{ latest_job.slug }}">{{ latest_job.title }}
 
-                        {% endif %}</li>
+                                {% if latest_job.notification_msg %}
+                                <small class="fw-bold job-notification">| {{ latest_job.notification_msg }}</small>
+                                {% else %}
+                                {% endif %}
+                            </a>
+
+
+                            {% if latest_job.is_new %}
+                            <span class="new-tag">NEW</span>
+                            {% endif %}
+                        </h3>
+                    </li>
                     {% endfor %}
                 </ul>
                 <!-- View More -->
@@ -242,12 +366,22 @@
                 <div class="sarkari-header">Admissions</div>
                 <ul class="sarkari-list">
                     {% for admission in admissions %}
-                    <li><a href="/{{ admission.slug }}">{{ admission.title }}</a>
-                    {% if admission.notification_msg %}
-                        <small class="fw-bold">| {{ admission.notification_msg }}</small>
-                        {% else %}
+                    <li>
+                        <h3 class="job-title d-flex align-items-center gap-2">
+                            <a href="/{{ admission.slug }}">{{ admission.title }}
+                                {% if admission.notification_msg %}
+                                <small class="fw-bold job-notification">| {{ admission.notification_msg }}</small>
+                                {% else %}
+                                {% endif %}
 
-                        {% endif %}</li>
+                            </a>
+
+
+                            {% if admission.is_new %}
+                            <span class="new-tag">NEW</span>
+                            {% endif %}
+                        </h3>
+                    </li>
                     {% endfor %}
                 </ul>
                 <!-- View More -->
@@ -261,12 +395,21 @@
                 <div class="sarkari-header">Answer Keys</div>
                 <ul class="sarkari-list">
                     {% for answer_key in answer_keys %}
-                    <li><a href="/{{ answer_key.slug }}">{{ answer_key.title }}</a>
-                    {% if answer_key.notification_msg %}
-                        <small class="fw-bold">| {{ answer_key.notification_msg }}</small>
-                        {% else %}
+                    <li>
+                        <h3 class="job-title d-flex align-items-center gap-2">
+                            <a href="/{{ answer_key.slug }}">{{ answer_key.title }}
+                                {% if answer_key.notification_msg %}
+                                <small class="fw-bold job-notification">| {{ answer_key.notification_msg }}</small>
+                                {% else %}
+                                {% endif %}
+                            </a>
+                            {% if answer_key.is_new %}
+                            <span class="new-tag">NEW</span>
+                            {% endif %}
 
-                        {% endif %}</li>
+                        </h3>
+
+                    </li>
                     {% endfor %}
                 </ul>
                 <!-- View More -->
@@ -280,12 +423,21 @@
                 <div class="sarkari-header">Documents</div>
                 <ul class="sarkari-list">
                     {% for document_verification in document_verifications %}
-                    <li><a href="/{{ document_verification.slug }}">{{ document_verification.title }}</a>
-                    {% if document_verification.notification_msg %}
-                        <small class="fw-bold">| {{ document_verification.notification_msg }}</small>
-                        {% else %}
+                    <li>
+                        <h3 class="job-title d-flex align-items-center gap-2">
+                            <a href="/{{ document_verification.slug }}">{{ document_verification.title }}
 
-                        {% endif %}</li>
+                                {% if document_verification.notification_msg %}
+                                <small class="fw-bold job-notification">| {{ document_verification.notification_msg }}</small>
+                                {% else %}
+                                {% endif %}
+                            </a>
+                            {% if document_verification.is_new %}
+                            <span class="new-tag">NEW</span>
+                            {% endif %}
+                        </h3>
+                       
+                    </li>
                     {% endfor %}
                 </ul>
                 <!-- View More -->
@@ -315,8 +467,8 @@
             <a href="https://t.me/sarkarijobsfinddotcom" target="_blank" rel="noopener noreferrer"
                 class="social-btn telegram">
                 <i data-lucide="send" style="width: 16px; height: 16px;"></i> Telegram </a>
-            <a href="https://x.com/SarkariJobs1998" target="_blank" rel="noopener noreferrer" class="social-btn twitter"> <i
-                data-lucide="x" style="width: 16px; height: 16px;"></i> Twitter </a>
+            <a href="https://x.com/SarkariJobs1998" target="_blank" rel="noopener noreferrer"
+                class="social-btn twitter"> <i data-lucide="x" style="width: 16px; height: 16px;"></i> Twitter </a>
         </div>
 
     </div>
@@ -382,25 +534,25 @@
             <h3 class="why-title">SarkariJobsFind.com Provides the Following Information:</h3>
             <div class="text-wrap">
                 <ul class="ms-1">
-                <li>Latest Sarkari Result updates for all major government exams</li>
-                <li>Daily सरकारी नौकरी notifications across India</li>
-                <li>Fast updates for Admit Card, Answer Key, and Results</li>
-                <li>Direct links to official government websites</li>
-                <li>Railway, SSC, UPSC, Banking, Police, Defence, and Teaching jobs</li>
-                <li>Central Government and State Government job alerts</li>
-                <li>Easy-to-understand job details and eligibility information</li>
-                <li>Online Form updates with important dates</li>
-                <li>Exam syllabus, selection process, and age limit details</li>
-                <li>Mobile-friendly and fast-loading website experience</li>
-                <li>Free access to all government job information</li>
-                <li>Regular updates for scholarship, admissions, and entrance exams</li>
-                <li>Instant notifications through WhatsApp and Telegram channels</li>
-                <li>Coverage for 10th pass, 12th pass, Graduate, and Diploma jobs</li>
-                <li>State-wise Sarkari Naukri updates for UP,Bihar,MP,Rajasthan,Delhi and more</li>
-                <li>Important government exam dates and recruitment schedules</li>
-                <li>Trusted source for latest Sarkari Exam news and updates</li>
-                <li>Simple and clean interface for quick job searching</li>
-            </ul>
+                    <li>Latest Sarkari Result updates for all major government exams</li>
+                    <li>Daily सरकारी नौकरी notifications across India</li>
+                    <li>Fast updates for Admit Card, Answer Key, and Results</li>
+                    <li>Direct links to official government websites</li>
+                    <li>Railway, SSC, UPSC, Banking, Police, Defence, and Teaching jobs</li>
+                    <li>Central Government and State Government job alerts</li>
+                    <li>Easy-to-understand job details and eligibility information</li>
+                    <li>Online Form updates with important dates</li>
+                    <li>Exam syllabus, selection process, and age limit details</li>
+                    <li>Mobile-friendly and fast-loading website experience</li>
+                    <li>Free access to all government job information</li>
+                    <li>Regular updates for scholarship, admissions, and entrance exams</li>
+                    <li>Instant notifications through WhatsApp and Telegram channels</li>
+                    <li>Coverage for 10th pass, 12th pass, Graduate, and Diploma jobs</li>
+                    <li>State-wise Sarkari Naukri updates for UP,Bihar,MP,Rajasthan,Delhi and more</li>
+                    <li>Important government exam dates and recruitment schedules</li>
+                    <li>Trusted source for latest Sarkari Exam news and updates</li>
+                    <li>Simple and clean interface for quick job searching</li>
+                </ul>
             </div>
 
         </div>
