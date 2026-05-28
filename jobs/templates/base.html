@@ -13,25 +13,39 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap"
         rel="stylesheet">
-        <meta name="google-adsense-account" content="ca-pub-6207096558790767">
-        <meta name="google-site-verification" content="_SZWXYg4QHKvUGNMwSiVXUajsz2a2nPkfmoRWQsXhA8" />
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L16P5HRRN"></script>
-        <script>
+    <meta name="google-adsense-account" content="ca-pub-6207096558790767">
+    <meta name="google-site-verification" content="_SZWXYg4QHKvUGNMwSiVXUajsz2a2nPkfmoRWQsXhA8" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L16P5HRRN"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-0L16P5HRRN');
-        </script>
+    </script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function (OneSignal) {
+            await OneSignal.init({
+                appId: "35a6ffd9-21ac-46f7-98b9-49c9caca0aa3",
+                safari_web_id: "web.onesignal.auto.3437296f-1581-4c9c-99a7-ef947df2b18c",
+                notifyButton: {
+                    enable: true,
+                },
+            });
+        });
+    </script>
 
-    
+
     {% block extra_head %}
     {% endblock %}
     <style>
         .job-notification {
             color: #ab183d;
         }
+
         .whatsapp-btn {
             position: fixed;
 
