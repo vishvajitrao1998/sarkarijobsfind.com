@@ -2,6 +2,7 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 from .views import *
 
@@ -15,6 +16,27 @@ urlpatterns = [
     path("p/about-us", about_us, name="about_us"),
     path("p/terms-and-conditions", terms_and_conditions, name="terms_and_conditions"),
     path("p/contact", contact, name="contact"),
+
+]
+
+
+urlpatterns += [
+
+    path(
+        "OneSignalSDKWorker.js",
+        TemplateView.as_view(
+            template_name="OneSignalSDKWorker.js",
+            content_type="application/javascript",
+        ),
+    ),
+
+    path(
+        "OneSignalSDKUpdaterWorker.js",
+        TemplateView.as_view(
+            template_name="OneSignalSDKUpdaterWorker.js",
+            content_type="application/javascript",
+        ),
+    ),
 
 ]
 
