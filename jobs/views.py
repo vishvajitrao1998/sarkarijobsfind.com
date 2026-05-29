@@ -131,7 +131,8 @@ def category_jobs(request, slug):
 
     context = {
         'category': category,
-        'jobs': jobs
+        'jobs': jobs,
+        'state': False
     }
 
     return render(request, 'category-jobs.html', context)
@@ -148,11 +149,12 @@ def state_jobs(request, slug):
         is_active=True
     ).order_by('-updated_at')
 
-    state.name = f"Sarkari Jobs in {state.name}"
-
+    state.title = f"Latest updates in {state.name}"
+ 
     context = {
         'category': state,
-        'jobs': jobs
+        'jobs': jobs,
+        'state': True
     }
 
     return render(request, 'category-jobs.html', context)

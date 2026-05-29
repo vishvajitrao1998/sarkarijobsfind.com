@@ -20,7 +20,13 @@
                 <span class="breadcrumb-link" onclick="goToHome()">Home</span> <span>/</span> <span>{{ category.name }}</span>
             </div>
             <div class="sarkari-box">
-                <div class="sarkari-header">{{ category.name }}</div>
+                <div class="sarkari-header">
+                    {% if state %}
+                        <h2>{{ state.title }}</h2>
+                    {% else %}
+                        <h2>{{ category.name }}</h2>
+                    {% endif %}
+                </div>
                 <ul class="sarkari-list">
 
                     {% if jobs %}
@@ -39,7 +45,7 @@
                     </li>
                     {% endfor %}
                     {% else %}
-                    <p class="text-center fw-bold">No jobs found.</p>
+                    <p class="text-center fw-bold">No updates found.</p>
                     {% endif %}
                 </ul>
 
