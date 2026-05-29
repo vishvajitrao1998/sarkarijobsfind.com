@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Contact, Job, JobFaqs, JobWidget, Category, Organization, JobLink, SocialLink, SEOSetting)
+from .models import (Contact, Job, JobFaqs, JobWidget, Category, Organization, JobLink, SocialLink, SEOSetting, State)
 
 
 admin.site.site_header = "SarkariJobsFind.com"      # Text in the large <h1> header
@@ -18,6 +18,12 @@ class SEOSettingAdmin(admin.ModelAdmin):
 @admin.register(Organization)
 class OrganizationAdmin(admin.ModelAdmin):
     search_fields = ('name',)
+
+
+@admin.register(State)
+class StateAdmin(admin.ModelAdmin):
+    search_fields = ('name',)
+    prepopulated_fields = {"slug": ("name",)}
 
 @admin.register(SocialLink)
 class SocialLinkAdmin(admin.ModelAdmin):

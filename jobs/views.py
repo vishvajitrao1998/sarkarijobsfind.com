@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from .models import Category, Contact, Job
+from .models import Category, Contact, Job, State
 
 # Create your views here.
 
 def home(request):
+
+    states = State.objects.all()
 
     all_jobs = Job.objects.filter(
         is_active=True
@@ -62,7 +64,8 @@ def home(request):
         'document_verifications': document_verifications,
         'admissions': admission,
         "featured_jobs": featured_jobs,
-        "jobs": all_jobs
+        "jobs": all_jobs,
+        "states": states
     }
 
     return render(request, "home2.html", context)
@@ -132,6 +135,28 @@ def category_jobs(request, slug):
     }
 
     return render(request, 'category-jobs.html', context)
+
+
+def state_jobs(request, slug):
+    state = get_object_or_404(
+        State,
+        slug=slug
+    )
+
+    jobs = Job.objects.filter(
+        states=state,
+        is_active=True
+    ).order_by('-updated_at')
+
+    state.name = f"Sarkari Jobs in {state.name}"
+
+    context = {
+        'category': state,
+        'jobs': jobs
+    }
+
+    return render(request, 'category-jobs.html', context)
+
 
 
 def privacy_policy(request):

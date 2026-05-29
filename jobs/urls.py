@@ -9,6 +9,7 @@ urlpatterns = [
     path("", home, name="home"),
     path("<str:slug>", job_detail_view, name="job_detail_view"),
     path("category/<str:slug>", category_jobs, name="category_jobs"),
+    path("state/<str:slug>", state_jobs, name="state_jobs"),
 
 
     path("p/privacy-policy", privacy_policy, name="privacy_policy"),

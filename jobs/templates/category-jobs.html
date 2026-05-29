@@ -16,21 +16,31 @@
 
         <!-- Result -->
         <div class="col-lg-8 offset-lg-2 mt-5">
-            <div
-                style="display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);">
+            <div style="display: flex; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);">
                 <span class="breadcrumb-link" onclick="goToHome()">Home</span> <span>/</span> <span>{{ category.name }}</span>
             </div>
             <div class="sarkari-box">
                 <div class="sarkari-header">{{ category.name }}</div>
                 <ul class="sarkari-list">
-                    {% for job in jobs %}
-                    <li><a href="/{{ job.slug }}">{{ job.title }}
 
-                        {% if job.notification_msg %}
-                            | {{ job.notification_msg }}
-                        {% endif %}
-                    </a></li>
+                    {% if jobs %}
+                    {% for job in jobs %}
+                    <li>
+                        <h3 class="job-title d-flex align-items-center gap-2">
+                            <a href="/{{ job.slug }}">{{ job.title }}
+                                {% if job.notification_msg %}
+                                | {{ job.notification_msg }}
+                                {% endif %}
+                            </a>
+                            {% if job.is_new %}
+                            <span class="new-tag">NEW</span>
+                            {% endif %}
+                        </h3>
+                    </li>
                     {% endfor %}
+                    {% else %}
+                    <p class="text-center fw-bold">No jobs found.</p>
+                    {% endif %}
                 </ul>
 
             </div>

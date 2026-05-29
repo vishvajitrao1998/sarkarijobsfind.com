@@ -19,6 +19,73 @@
 <link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
 
 <style>
+    .jobs-by-state {
+        /* background: #f5f7ff; */
+        border-radius: 16px;
+        margin-top: 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #ab183d;
+        margin-bottom: 10px;
+    }
+
+    .section-heading p {
+        color: #666;
+        font-size: 16px;
+    }
+
+    .state-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 18px;
+    }
+
+    .state-card {
+        /* background: #ffffff; */
+        border-radius: 14px;
+        padding: 18px 15px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        color: #ab183d;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 2px 10px #ab183d;
+        position: relative;
+        
+    }
+    .state-card:hover {
+        background: linear-gradient(135deg, #ab183d, #25D366);
+        color: #fff;
+        box-shadow: 0 2px 10px #ab183d;
+    }
+
+    .state-card span {
+        position: relative;
+        z-index: 2;
+    }
+
+
+    @media (max-width: 768px) {
+
+        .section-heading h2 {
+            font-size: 24px;
+        }
+
+        .state-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .state-card {
+            padding: 14px 10px;
+            font-size: 14px;
+        }
+    }
+
     .ticker-job {
         color: black;
         font-weight: 500;
@@ -40,85 +107,6 @@
         flex-wrap: wrap;
     }
 
-    /* Stylish NEW Tag */
-    .new-tag {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2px 10px;
-        font-size: 10px;
-        font-weight: 800;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #fff;
-        background: linear-gradient(135deg, #e80d44, #09dc09);
-        border-radius: 50px;
-        overflow: hidden;
-        box-shadow:
-            0 5px 15px rgba(255, 8, 68, 0.35),
-            inset 0 1px 1px rgba(255, 255, 255, 0.4);
-        animation: glow 2s infinite ease-in-out;
-    }
-
-    /* Shine Effect */
-    .new-tag::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -80%;
-        width: 40%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.5);
-        transform: skewX(-25deg);
-        animation: shine 2.5s infinite;
-    }
-
-    /* Small Dot */
-    .new-tag::after {
-        content: "";
-        width: 8px;
-        height: 8px;
-        background: #fff;
-        border-radius: 50%;
-        margin-left: 8px;
-        animation: blink 1s infinite;
-    }
-
-    @keyframes shine {
-        100% {
-            left: 140%;
-        }
-    }
-
-    @keyframes glow {
-        0% {
-            transform: scale(1);
-            box-shadow: 0 5px 15px rgba(255, 8, 68, 0.35);
-        }
-
-        50% {
-            transform: scale(1.08);
-            box-shadow: 0 8px 25px rgba(255, 8, 68, 0.5);
-        }
-
-        100% {
-            transform: scale(1);
-            box-shadow: 0 5px 15px rgba(255, 8, 68, 0.35);
-        }
-    }
-
-    @keyframes blink {
-
-        0%,
-        100% {
-            opacity: 1;
-        }
-
-        50% {
-            opacity: 0.2;
-        }
-    }
 </style>
 
 {% endblock %}
@@ -134,11 +122,11 @@
                     <div class="ticker-content text-sm fw-semibold text-white">
                         {% for job in featured_jobs %}
                         <span class="d-flex gap-2">
-                            
+
                             <a href="/{{ job.slug }}" class="ticker-job">
                                 {{ job.title }}
                             </a>
-                        {% if job.is_new %}
+                            {% if job.is_new %}
                             <span class="new-tag">NEW</span>
                             {% endif %}
                         </span>|
@@ -428,7 +416,8 @@
                             <a href="/{{ document_verification.slug }}">{{ document_verification.title }}
 
                                 {% if document_verification.notification_msg %}
-                                <small class="fw-bold job-notification">| {{ document_verification.notification_msg }}</small>
+                                <small class="fw-bold job-notification">| {{ document_verification.notification_msg
+                                    }}</small>
                                 {% else %}
                                 {% endif %}
                             </a>
@@ -436,7 +425,7 @@
                             <span class="new-tag">NEW</span>
                             {% endif %}
                         </h3>
-                       
+
                     </li>
                     {% endfor %}
                 </ul>
@@ -471,6 +460,29 @@
                 class="social-btn twitter"> <i data-lucide="x" style="width: 16px; height: 16px;"></i> Twitter </a>
         </div>
 
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <!-- Jobs By State Section -->
+        <section class="jobs-by-state py-4">
+            <div class="container">
+                <div class="section-heading text-center mb-4">
+                    <h2>- Sarkari Jobs By State - </h2>
+                    <p>Find Latest Sarkari Jobs State Wise Across India</p>
+                </div>
+
+                <div class="state-grid">
+                    {% for state in states %}
+                        <a href="/state/{{ state.slug }}" class="state-card">
+                            <span>{{ state.name }}</span>
+                        </a>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 
