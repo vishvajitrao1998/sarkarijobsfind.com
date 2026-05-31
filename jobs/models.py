@@ -1,5 +1,5 @@
 import uuid
-
+from django.urls import reverse
 from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
@@ -13,6 +13,12 @@ class State(models.Model):
     def __str__(self):
         return self.name
     
+    def get_absolute_url(self):
+        return reverse(
+            'state_jobs',
+            kwargs={'slug': self.slug}
+        )
+    
 
 
 class Category(models.Model):
@@ -22,6 +28,12 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse(
+            'category_jobs',
+            kwargs={'slug': self.slug}
+        )
     
     class Meta:
         verbose_name = "Category"
@@ -81,6 +93,9 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('job_detail_view', kwargs={'slug': self.slug})
 
 
 class JobWidget(models.Model):
