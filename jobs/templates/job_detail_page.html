@@ -146,6 +146,8 @@
 
                             {% endif %}</li>
                         </h1>
+
+                        {% if job_info.job.tags.all %}
                         <div class="tags mt-2"><span class="fw-bold">Tags:</span>
                             {% for tag in job_info.job.tags.all %}
                             <a href="{% url 'tag_detail' tag.slug %}" class="tag">
@@ -153,6 +155,7 @@
                             </a>
                             {% endfor %}
                         </div>
+                        {% endif %}
                     </div>
 
 
