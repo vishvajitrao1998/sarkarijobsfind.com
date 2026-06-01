@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Contact, Job, JobFaqs, JobWidget, Category, Organization, JobLink, SocialLink, SEOSetting, State)
+from .models import (Contact, Job, JobFaqs, JobWidget, Category, Option, Organization, JobLink, Question, QuizTitle, SocialLink, SEOSetting, State, Tag)
 
 
 admin.site.site_header = "SarkariJobsFind.com"      # Text in the large <h1> header
@@ -113,4 +113,38 @@ class JobWidgetAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'email')
     ordering = ['-created_at']
+
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug')
+    prepopulated_fields = {"slug": ("name",)}
+    search_fields = ('name',)
+    ordering = ['-updated_at']
+
+
+
+@admin.register(QuizTitle)
+class QuizTitleAdmin(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'is_active'
+    )
+    search_fields = ('title',)
+    prepopulated_fields = {"slug": ("title",)}
+    list_filter = ('is_active',)
+
+class OptionInline(admin.TabularInline):
+    model = Option
+    extra = 4
+
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+     list_display = (
+        'quiz',
+        'question_text'
+    )
+     inlines = [OptionInline]
     

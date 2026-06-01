@@ -18,6 +18,21 @@ class State(models.Model):
             'state_jobs',
             kwargs={'slug': self.slug}
         )
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(unique=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse(
+            'tag_detail',
+            kwargs={'tag_slug': self.slug}
+        )
     
 
 
@@ -61,6 +76,11 @@ class Job(models.Model):
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='jobs')
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True)
+    tags = models.ManyToManyField(
+        Tag,
+        blank=True,
+        related_name="jobs"
+    )
     states = models.ManyToManyField(State, blank=True)
 
     description = RichTextField(null=True, blank=True)
@@ -211,6 +231,55 @@ class Contact(models.Model):
         verbose_name = "Contact"
         verbose_name_plural = "Contacts"
 
+
+
+# MCQ Model for Job Exams
+# models.py
+
+class QuizTitle(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, blank=True,null=True)
+    quiz_desc = RichTextField(blank=True, null=True)
+    tags = models.ManyToManyField(
+        Tag,
+        blank=True,
+        related_name="quizzes"
+    )
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.title}"
+    
+    def get_absolute_url(self):
+        return reverse('quiz_detail', kwargs={'quiz_slug': self.slug})
+    
+
+
+
+class Question(models.Model):
+    quiz = models.ForeignKey(
+        QuizTitle,
+        on_delete=models.CASCADE,
+        related_name='questions'
+    )
+    question_text = models.CharField(max_length=255,blank=True, null=True)
+    question_desc = RichTextField(blank=True, null=True)  # Optional field for rich text questions
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.question_text}"
+
+class Option(models.Model):
+    question = models.ForeignKey(
+        Question,
+        on_delete=models.CASCADE,
+        related_name='options'
+    )
+    option_text = models.CharField(max_length=500)
+    is_correct = models.BooleanField(default=False)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 

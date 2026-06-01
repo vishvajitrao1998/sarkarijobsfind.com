@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from .models import Category, Contact, Job, State
+from .models import Category, Contact, Job, QuizTitle, State, Tag
 
 # Create your views here.
 
@@ -85,7 +85,10 @@ def job_detail_view(request, slug):
         is_active=True
     )
 
+    print(job.tags.all())
+
     data = {
+        "job": job,
         "title": job.title,
         "notification_msg": job.notification_msg,
         "slug": job.slug,
@@ -115,7 +118,6 @@ def job_detail_view(request, slug):
         # "syllabus": job.syllabus.all()[0] if len(job.syllabus.all()) else 'NA',
         # "guides": job.guides.all()[0] if len(job.guides.all()) else 'NA',
     }
-    print(job.job_faqs.all())
     return render(request, "job_detail_page.html", {'job_info': data})
 
 def category_jobs(request, slug):
@@ -186,5 +188,62 @@ def contact(request):
         flag = True
         return render(request, "contact.html", {"flag": flag})
     return render(request, 'contact.html')
+
+
+
+def quiz_detail(request, quiz_slug):
+    quiz = QuizTitle.objects.prefetch_related(
+        'questions__options'
+    ).get(slug=quiz_slug)
+
+    jobs = Job.objects.filter(
+    tags__in=quiz.tags.all()
+        ).distinct()
+    
+    return render(
+        request,
+        'quiz.html',
+        {
+            'quiz': quiz,
+            'jobs': jobs
+        }
+    )
+
+
+def tag_detail(request, tag_slug):
+
+    tag = get_object_or_404(
+        Tag,
+        slug=tag_slug
+    )
+
+    tags = Tag.objects.all()
+
+    jobs = (
+        Job.objects
+        .filter(tags=tag)
+        .distinct()
+        .order_by('-id')
+    )
+
+    quizzes = (
+        QuizTitle.objects
+        .filter(tags=tag)
+        .distinct()
+        .order_by('-id')
+    )
+
+    context = {
+        "tag": tag,
+        "jobs": jobs,
+        "quizzes": quizzes,
+        "tags": tags
+    }
+
+    return render(
+        request,
+        "tags.html",
+        context
+    )
 
 

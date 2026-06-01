@@ -89,6 +89,18 @@
         flex-shrink: 0;
     }
 
+    .tag {
+        display: inline-block;
+        background: var(--single-job-color);
+        color: var(--bg-main);
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-decoration: none;
+        margin: 4px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
     /* Mobile Responsive */
     @media (max-width: 576px) {
         .important-link-item {
@@ -112,13 +124,17 @@
 {% block content %}
 
 <div class="container-lg px-4 py-4"><!-- Breadcrumb -->
-    <div
-        style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);">
-        <span class="breadcrumb-link" onclick="goToHome()">Home</span> <span>/</span> <span
-            id="jobBreadcrumb">{{job_info.title}}</span>
-    </div>
+
     <div class="row">
+
         <div class="col-lg-10 offset-lg-1">
+
+            <div
+                style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);">
+                <span class="breadcrumb-link" onclick="goToHome()">Home</span> <span>/</span> <span
+                    id="jobBreadcrumb">{{job_info.title}}</span>
+            </div>
+
             <div class="job-header glass-card p-4 mb-4">
                 <div class="d-flex align-items-start justify-content-between mb-3">
                     <div>
@@ -130,14 +146,21 @@
 
                             {% endif %}</li>
                         </h1>
-                        <p id="jobOrg" style="font-size: 16px; margin: 0; color: #cbd5e1;"></p>
+                        <div class="tags mt-2"><span class="fw-bold">Tags:</span>
+                            {% for tag in job_info.job.tags.all %}
+                            <a href="{% url 'tag_detail' tag.slug %}" class="tag">
+                                {{ tag.name }}
+                            </a>
+                            {% endfor %}
+                        </div>
                     </div>
+
 
                     <button class="btn btn-primary btn-sm text-white fw-bold text-nowrap mb-3"
                         onclick="copyCurrentLink()" id="copyBtn">Copy Link
                     </button>
-
                 </div>
+
                 <div class="shares-btn mt-3 ms-3" style="color: #f59e0b;font-weight: bold;cursor: pointer;">
                     Share This
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -459,10 +482,10 @@
         document.getElementById("vacancies").innerHTML = "NA";
     }
     else {
-    document.getElementById("vacancies").innerHTML = formattedNumber;
-    console.log(formattedNumber); // 11,127
+        document.getElementById("vacancies").innerHTML = formattedNumber;
+        console.log(formattedNumber); // 11,127
     }
 
-    
+
 </script>
 {% endblock %}

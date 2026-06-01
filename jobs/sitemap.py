@@ -1,6 +1,6 @@
 # sitemap.py
 from django.contrib.sitemaps import Sitemap
-from .models import Category, Job, State
+from .models import Category, Job, QuizTitle, State, Tag
 from django.urls import reverse
 
 class JobSitemap(Sitemap):
@@ -46,3 +46,25 @@ class StaticViewSitemap(Sitemap):
 
     def location(self, item):
         return reverse(item)
+
+
+class MCQSitemap(Sitemap):
+    priority = 0.8
+    changefreq = 'daily'
+
+    def items(self):
+        return QuizTitle.objects.filter(is_active=True).order_by('-updated_at')
+
+    def lastmod(self, obj):
+        return obj.updated_at
+    
+
+class TagSitemap(Sitemap):
+    priority = 0.8
+    changefreq = 'daily'
+
+    def items(self):
+        return Tag.objects.order_by('-updated_at')
+
+    def lastmod(self, obj):
+        return obj.updated_at

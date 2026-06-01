@@ -1,0 +1,507 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+<title>SarkariJobsFind.com - {{ quiz.title }}</title>
+<link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* .container {
+        max-width: 1000px;
+        margin: auto;
+    } */
+
+    .quiz-header {
+        background: var(--bg-card);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 25px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+    }
+
+    .quiz-header h2 {
+        margin-bottom: 10px;
+        color: #fbbf24;
+        font-weight: 800;
+    }
+
+    .quiz-header p {
+        color: #666;
+    }
+
+    .question-card {
+        background: var(--bg-card);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+        transition: .3s;
+    }
+
+    .question-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .question-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 18px;
+        color: #f61414
+    }
+
+    .option-label {
+        display: block;
+        padding: 14px;
+        border: 2px solid #e5e7eb;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: .25s;
+    }
+
+    .option-label:hover {
+        /* background: #f8fafc; */
+        border-color: #991b1b;
+    }
+
+    .option-label input {
+        margin-right: 10px;
+    }
+
+    .correct {
+        background: #dcfce7 !important;
+        border-color: #22c55e !important;
+        color: #166534;
+        font-weight: 600;
+    }
+
+    .wrong {
+        background: #fee2e2 !important;
+        border-color: #ef4444 !important;
+        color: #991b1b;
+        font-weight: 600;
+    }
+
+    .action-area {
+        text-align: center;
+        margin: 30px 0;
+    }
+
+    .btn {
+        border: none;
+        padding: 14px 30px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 5px;
+        transition: .3s;
+    }
+
+    .btn-submit {
+        background: #991b1b;
+        color: #fff;
+    }
+
+    .btn-submit:hover {
+        background: #ef4444;
+    }
+
+    .btn-retry {
+        background: #16a34a;
+        color: #fff;
+        display: none;
+    }
+
+    .btn-retry:hover {
+        background: #15803d;
+    }
+
+    .result-card {
+        background: #fff;
+        border-radius: 15px;
+        text-align: center;
+        padding: 25px;
+        margin-top: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+    }
+
+    .score {
+        font-size: 30px;
+        font-weight: bold;
+        color: #2563eb;
+    }
+
+    .tag {
+        display: inline-block;
+        background: var(--single-job-color);
+        color: var(--bg-main);
+        padding: 6px 12px;
+        border-radius: 20px;
+        text-decoration: none;
+        margin: 4px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .related-jobs {
+        display: inline-block;
+        background: var(--single-job-color);
+        color: var(--bg-main);
+        padding: 6px 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        margin: 4px;
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    @media(max-width:768px) {
+
+        .question-card {
+            padding: 18px;
+        }
+
+        .question-title {
+            font-size: 16px;
+        }
+
+        .btn {
+            width: 100%;
+        }
+
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);"
+        class="mt-3">
+        <span class="breadcrumb-link" onclick="goToHome()">Home</span> <span>/</span><span>MCQ</span> <span>/</span>
+        <span id="jobBreadcrumb">{{ quiz.title }}</span>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-md-8">
+            <div class="quiz-header">
+                <h2 id="hero-heading">{{ quiz.title }}</h2>
+                <p class="mt-3">
+                    {{ quiz.quiz_desc | safe }}
+                </p>
+
+                {% if quiz.description %}
+                <p>{{ quiz.description }}</p>
+                {% endif %}
+
+                <div class="container my-5">
+                    <div class="mx-5">
+                        <h6>📢 Connect with <strong class="text-decoration-underline">SarkariJobsFind.com</strong> to
+                            Get instant
+                            Updates....</h6>
+                        <div class="social-links">
+                            <a href="https://www.whatsapp.com/channel/0029VbCgR39HltYEK2ShZK3X" target="_blank"
+                                rel="noopener noreferrer" class="social-btn whatsapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                    <path
+                                        d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                                </svg>
+                                WhatsApp </a>
+                            <a href="https://www.facebook.com/groups/sarkarijobsfind" target="_blank"
+                                rel="noopener noreferrer" class="social-btn facebook"> <i data-lucide="facebook"
+                                    style="width: 16px; height: 16px;"></i> Facebook
+                            </a>
+                            <a href="https://t.me/sarkarijobsfinddotcom" target="_blank" rel="noopener noreferrer"
+                                class="social-btn telegram">
+                                <i data-lucide="send" style="width: 16px; height: 16px;"></i> Telegram </a>
+                            <a href="https://x.com/SarkariJobs1998" target="_blank" rel="noopener noreferrer"
+                                class="social-btn twitter"> <i data-lucide="x" style="width: 16px; height: 16px;"></i>
+                                Twitter </a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mt-3 ms-3" style="color: #f59e0b;font-weight: bold;cursor: pointer;">
+                    Share This MCQ:-
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        class="bi bi-share" viewBox="0 0 16 16" onclick="displayShare('{{colorPalette.id}}')">
+                        <path
+                            d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3" />
+                    </svg>
+
+                </div>
+
+            </div>
+
+            <form id="quizForm">
+                {% for question in quiz.questions.all %}
+                <div class="question-card">
+                    <div class="question-title fw-bold">
+                        {{ forloop.counter }}.
+                        {{ question.question_text|safe }}
+                    </div>
+                    {% for option in question.options.all %}
+
+                    <label class="option-label">
+
+                        <input type="radio" name="question_{{ question.id }}" value="{{ option.id }}"
+                            data-correct="{{ option.is_correct|yesno:'true,false' }}">
+
+                        {{ option.option_text }}
+
+                    </label>
+
+                    {% endfor %}
+
+                </div>
+
+                {% endfor %}
+
+                <div class="action-area">
+
+                    <button type="button" id="submitBtn" class="btn btn-submit">
+                        Submit Quiz
+                    </button>
+
+                    <button type="button" id="retryBtn" class="btn btn-retry">
+                        Retry Quiz
+                    </button>
+
+                </div>
+
+            </form>
+            <!-- <div id="result"></div> -->
+        </div>
+        <div class="col-md-4">
+            <div class="tags">
+                <div class="sarkari-header mb-2">Related Tags</div>
+                {% for tag in quiz.tags.all %}
+                <a href="{% url 'tag_detail' tag.slug %}" class="tag">
+                    {{ tag.name }}
+                </a>
+                {% endfor %}
+            </div>
+            <div class="tags">
+                <div class="sarkari-header mt-4 mb-2">Related Jobs</div>
+                {% for job in jobs %}
+                <a href="{% url 'job_detail_view' job.slug %}" class="related-jobs">
+                    ➡️ {{ job.title }}
+
+                    {% if job.notification_msg %}
+                    <small class="fw-bold">| {{ job.notification_msg }}</small>
+                    {% else %}
+                    {% endif %}
+
+                </a>
+                {% if job.is_new %}
+                <span class="new-tag">NEW</span>
+                {% endif %}
+
+                <br>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal for social media sharing -->
+    <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="generic-heading">SarkariJobsFind.com</h5>
+                    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="social-icons">
+                        <!-- Facebook Share -->
+                        <a target="_blank" class="facebook" id="fb-share">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-facebook" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                            </svg>
+                        </a>
+                        <!-- Twitter Share -->
+                        <a href="https://twitter.com/intent/tweet?url=https://short.ly/abcd12" target="_blank"
+                            class="twitter" id="x-share">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+                            </svg>
+                        </a>
+                        <!-- WhatsApp Share -->
+                        <a href="https://api.whatsapp.com/send?text=Check this out: https://short.ly/abcd12"
+                            target="_blank" class="whatsapp" id="whatsapp-share">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path
+                                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                            </svg>
+                        </a>
+                        <!-- LinkedIn Share -->
+                        <a href="" target="_blank" class="linkedin" id="linkedin-share">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-linkedin" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                            </svg>
+                        </a>
+                        <!-- Telegram Share -->
+                        <a href="" target="_blank" class="telegram" id="telegram-share">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-telegram" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Close -->
+
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    const submitBtn = document.getElementById("submitBtn");
+    const retryBtn = document.getElementById("retryBtn");
+
+    submitBtn.addEventListener("click", function () {
+
+        let score = 0;
+
+        const questions =
+            document.querySelectorAll(".question-card");
+
+        questions.forEach(question => {
+
+            const selected =
+                question.querySelector(
+                    "input[type='radio']:checked"
+                );
+
+            const options =
+                question.querySelectorAll(
+                    "input[type='radio']"
+                );
+
+            options.forEach(option => {
+
+                option.disabled = true;
+
+                const label = option.parentElement;
+
+                if (option.dataset.correct === "true") {
+                    label.classList.add("correct");
+                }
+
+                if (
+                    selected &&
+                    option.checked &&
+                    option.dataset.correct === "false"
+                ) {
+                    label.classList.add("wrong");
+                }
+
+            });
+
+            if (
+                selected &&
+                selected.dataset.correct === "true"
+            ) {
+                score++;
+            }
+
+        });
+
+        // document.getElementById("result").innerHTML = `
+        // <div class="result-card">
+        //     <div class="score">
+        //         ${score} / ${questions.length}
+        //     </div>
+        //     <h3>Your Quiz Result</h3>
+        // </div>`;
+
+        submitBtn.disabled = true;
+        retryBtn.style.display = "inline-block";
+
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+
+    });
+
+    retryBtn.addEventListener("click", function () {
+
+        document
+            .querySelectorAll("input[type='radio']")
+            .forEach(input => {
+
+                input.checked = false;
+                input.disabled = false;
+            });
+
+        document
+            .querySelectorAll(".correct")
+            .forEach(item => {
+                item.classList.remove("correct");
+            });
+
+        document
+            .querySelectorAll(".wrong")
+            .forEach(item => {
+                item.classList.remove("wrong");
+            });
+
+        // document.getElementById("result").innerHTML = "";
+
+        submitBtn.disabled = false;
+        retryBtn.style.display = "none";
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+    });
+</script>
+<script>
+    function displayShare() {
+        const paletteLink = `${window.location.href}`;
+        const title = document.title;
+        const fbbtn = document.getElementById('fb-share');
+        const xbtn = document.getElementById('x-share');
+        const whatsappbtn = document.getElementById('whatsapp-share');
+        const telegrambtn = document.getElementById('telegram-share');
+        const linkedinbtn = document.getElementById('linkedin-share');
+        fbbtn.href = `https://www.facebook.com/sharer/sharer.php?u=${paletteLink}`;
+        xbtn.href = `https://x.com/intent/tweet?url=${paletteLink}&text=${title}`;
+        whatsappbtn.href = `https://wa.me/?text=${paletteLink}`;
+        linkedinbtn.href = `https://www.linkedin.com/shareArticle?url=${paletteLink}&title=${title}`;
+        telegrambtn.href = `https://t.me/share/url?url=${paletteLink}&title=${title}`;
+        // Show the modal if the copy was successful
+        var myModal = new bootstrap.Modal(document.getElementById('shareModal'), {
+            keyboard: false
+        });
+        myModal.show();
+    }
+</script>
+{% endblock %}
