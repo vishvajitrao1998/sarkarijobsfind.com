@@ -248,8 +248,15 @@
                     <div class="question-title fw-bold">
                         {{ forloop.counter }}.
                         {{ question.question_text|safe }}
+                        {% if question.question_desc %}
+                            <div class="question-description ms-3">
+                                {{ question.question_desc|safe }}
+                            </div>
+                        {% endif %}
                     </div>
                     {% for option in question.options.all %}
+
+                    
 
                     <label class="option-label">
 

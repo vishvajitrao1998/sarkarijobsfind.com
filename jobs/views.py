@@ -199,7 +199,7 @@ def quiz_detail(request, quiz_slug):
     jobs = Job.objects.filter(
     tags__in=quiz.tags.all()
         ).distinct()
-    quizs = QuizTitle.objects.filter(tags__in=quiz.tags.all())
+    quizs = QuizTitle.objects.filter(tags__in=quiz.tags.all()).distinct()
     return render(
         request,
         'quiz.html',
