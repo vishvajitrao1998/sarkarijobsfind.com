@@ -202,6 +202,17 @@
                 <p>{{ quiz.description }}</p>
                 {% endif %}
 
+                <div class="my-2">
+                    <p>The MCQs, quizzes, mock tests, and practice questions available on SarkariJobsFind are intended
+                        solely for exam preparation and self-assessment. Questions, answers, explanations, and expected
+                        solutions are prepared from various educational sources and may contain errors or omissions.
+                    </p>
+                    <p>
+                        Users are advised to cross-check important information with official study materials, textbooks,
+                        and examination authorities. SarkariJobsFind does not guarantee the accuracy of any practice
+                        content and accepts no responsibility for decisions made based on such material.</p>
+                </div>
+
                 <div class="container my-5">
                     <div class="mx-5">
                         <h6>📢 Connect with <strong class="text-decoration-underline">SarkariJobsFind.com</strong> to
@@ -249,14 +260,14 @@
                         {{ forloop.counter }}.
                         {{ question.question_text|safe }}
                         {% if question.question_desc %}
-                            <div class="question-description ms-3">
-                                {{ question.question_desc|safe }}
-                            </div>
+                        <div class="question-description ms-3">
+                            {{ question.question_desc|safe }}
+                        </div>
                         {% endif %}
                     </div>
                     {% for option in question.options.all %}
 
-                    
+
 
                     <label class="option-label">
 
@@ -301,7 +312,7 @@
                 <div class="sarkari-header mb-2">Related MCQs</div>
                 {% for quiz in quizs %}
                 <a href="{% url 'quiz_detail' quiz.slug %}" class="tag" style="font-size: 10px;">
-                     ➡️ {{ quiz.title }}
+                    ➡️ {{ quiz.title }}
                 </a>
                 {% endfor %}
             </div>
@@ -323,7 +334,7 @@
                 {% endfor %}
 
             </div>
-            
+
         </div>
 
     </div>
