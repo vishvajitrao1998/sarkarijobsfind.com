@@ -183,7 +183,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container my-2">
     <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);"
         class="mt-3">
         <span class="breadcrumb-link" onclick="goToHome()">Home</span> <span>/</span><span>MCQ</span> <span>/</span>
@@ -290,17 +290,23 @@
                 </a>
                 {% endfor %}
             </div>
+            <div class="tags mt-2">
+                <div class="sarkari-header mb-2">Related MCQs</div>
+                {% for quiz in quizs %}
+                <a href="{% url 'quiz_detail' quiz.slug %}" class="tag" style="font-size: 10px;">
+                     ➡️ {{ quiz.title }}
+                </a>
+                {% endfor %}
+            </div>
             <div class="tags">
                 <div class="sarkari-header mt-4 mb-2">Related Jobs</div>
                 {% for job in jobs %}
                 <a href="{% url 'job_detail_view' job.slug %}" class="related-jobs">
                     ➡️ {{ job.title }}
-
                     {% if job.notification_msg %}
                     <small class="fw-bold">| {{ job.notification_msg }}</small>
                     {% else %}
                     {% endif %}
-
                 </a>
                 {% if job.is_new %}
                 <span class="new-tag">NEW</span>
@@ -310,6 +316,7 @@
                 {% endfor %}
 
             </div>
+            
         </div>
 
     </div>
