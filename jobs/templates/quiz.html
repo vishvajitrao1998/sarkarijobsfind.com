@@ -3,7 +3,10 @@
 {% block extra_head %}
 <title>SarkariJobsFind.com - {{ quiz.title }}</title>
 <link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"></script>
 
 <style>
     * {
