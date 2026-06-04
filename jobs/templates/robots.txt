@@ -1,0 +1,12 @@
+User-agent: *
+
+Allow: /
+
+Disallow: /admin/
+
+Sitemap: https://sarkarijobsfind.com/sitemap.xml
+Sitemap: https://sarkarijobsfind.com/mcqs/sitemap.xml
+Sitemap: https://sarkarijobsfind.com/tags/sitemap.xml
+Sitemap: https://sarkarijobsfind.com/categories/sitemap.xml
+Sitemap: https://sarkarijobsfind.com/states/sitemap.xml
+Sitemap: https://sarkarijobsfind.com/page/sitemap.xml
