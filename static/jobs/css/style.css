@@ -4,14 +4,7 @@ body {
   margin: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-/* h6 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-} */
+ 
 
 :root {
   --bg-main: #f8fafc;
@@ -22,9 +15,10 @@ h5,
   --border-color: #e2e8f0;
   --accent: #f59e0b;
   --accent-hover: #8c0101;
-  --single-job-color: #8c0101;
+  --single-job-color: #ff4040;
   --text-color: black;
   --border-color-post: #ab183d;
+  --border-color-posts: #ab183d;
 }
 
 .dark-mode {
@@ -729,7 +723,7 @@ a {
 .sarkari-list a {
   text-decoration: none;
   color: #0000ee;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /* 🔥 View More Button */
