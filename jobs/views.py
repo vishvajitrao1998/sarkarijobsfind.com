@@ -104,7 +104,7 @@ def job_detail_view(request, slug):
             "created_at": job.created_at if job.created_at else 'NA',
         },
         "job_widgets": job.job_widgets.all(),
-        "important_links": job.official_links.all(),
+        "important_links": job.official_links.all().order_by('-created_at'),
         "faqs": job.job_faqs.filter(is_active=True),
         "featured_image": job.featured_image if job.featured_image else 'NA',
 

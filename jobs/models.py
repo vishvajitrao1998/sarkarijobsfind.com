@@ -145,7 +145,7 @@ class JobLink(models.Model):
     url = models.URLField(blank=True, null=True)  # Optional URL field
     # Note Optional
     note = models.CharField(max_length=255, blank=True, null=True)
-    is_primary = models.BooleanField(default=False)  # highlight button
+    is_new = models.BooleanField(default=False)  # highlight button
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
