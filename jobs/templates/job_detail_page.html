@@ -278,10 +278,10 @@
                     <div class="important-link-item">
 
                         <!-- Title -->
-                        <div class="important-link-title">
+                        <div class="important-link-title d-flex align-items-center gap-2">
                             {{ link.title }}
 
-                             {% if result.is_new %}
+                             {% if link.is_new %}
                             <span class="new-tag ms-2">NEW</span>
                             {% endif %}
                         </div>
