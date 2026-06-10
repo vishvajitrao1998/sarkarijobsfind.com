@@ -72,7 +72,8 @@ class Job(models.Model):
 
     title = models.CharField(max_length=255)
     notification_msg = models.CharField(max_length=255, default='', blank=True)
-    slug = models.SlugField(unique=True, blank=True)
+    slug = models.SlugField(unique=True, blank=True, max_length=400
+    )
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='jobs')
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True)
