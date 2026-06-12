@@ -363,7 +363,7 @@
             <div class="tags mt-2">
                 <div class="sarkari-header mb-2">Latest Updates</div>
                 {% for job in job_info.latest_updates %}
-                <a href="{% url 'job_detail' job.slug %}" class="tag" style="font-size: 10px;">
+                <a href="{% url 'job_detail_view' job.slug %}" class="tag" style="font-size: 10px;">
                     👉 {{ job.title }}
                 </a>
                 {% endfor %}

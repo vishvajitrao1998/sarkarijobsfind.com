@@ -75,7 +75,7 @@ class Job(models.Model):
     slug = models.SlugField(unique=True, blank=True, max_length=400
     )
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='jobs')
+    category = models.ManyToManyField(Category, blank=True, related_name='jobs')
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True)
     tags = models.ManyToManyField(
         Tag,

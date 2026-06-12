@@ -77,13 +77,13 @@ def single_job(request):
 
 def job_detail_view(request, slug):
     job = get_object_or_404(
-        Job.objects.select_related('category')
-        .prefetch_related(
-            'job_widgets'
-        ),
-        slug=slug,
-        is_active=True
-    )
+    Job.objects.prefetch_related(
+        'category',
+        'job_widgets'
+    ),
+    slug=slug,
+    is_active=True
+)
 
     latest_jobs = Job.objects.filter(is_active=True).filter(category__name='Latest Jobs').order_by('-updated_at')[:10]
     latest_updates = Job.objects.filter(is_active=True).filter(category__name='Latest Updates').order_by('-updated_at')[:10]
