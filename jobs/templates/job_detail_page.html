@@ -94,7 +94,7 @@
         background: var(--single-job-color);
         color: var(--bg-main);
         padding: 4px 10px;
-        border-radius: 20px;
+        border-radius: 10px;
         text-decoration: none;
         margin: 4px;
         font-size: 14px;
@@ -124,10 +124,8 @@
 {% block content %}
 
 <div class="container-lg px-4 py-4"><!-- Breadcrumb -->
-
     <div class="row">
-
-        <div class="col-lg-10 offset-lg-1">
+        <div class="col-lg-9">
 
             <div
                 style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);">
@@ -281,7 +279,7 @@
                         <div class="important-link-title d-flex align-items-center gap-2">
                             {{ link.title }}
 
-                             {% if link.is_new %}
+                            {% if link.is_new %}
                             <span class="new-tag ms-2">NEW</span>
                             {% endif %}
                         </div>
@@ -351,6 +349,25 @@
                 {% endfor %}
             </div><!-- Sidebar -->
             {% endif %}
+        </div>
+
+        <div class="col-lg-3 mt-5">
+            <div class="tags">
+                <div class="sarkari-header mb-2">Latest Jobs</div>
+                {% for job in job_info.latest_jobs %}
+                <a href="{% url 'job_detail_view' job.slug %}" class="tag">
+                    👉 {{ job.title }}
+                </a>
+                {% endfor %}
+            </div>
+            <div class="tags mt-2">
+                <div class="sarkari-header mb-2">Latest Updates</div>
+                {% for job in job_info.latest_updates %}
+                <a href="{% url 'job_detail' job.slug %}" class="tag" style="font-size: 10px;">
+                    👉 {{ job.title }}
+                </a>
+                {% endfor %}
+            </div>
         </div>
 
     </div>

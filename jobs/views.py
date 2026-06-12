@@ -85,7 +85,10 @@ def job_detail_view(request, slug):
         is_active=True
     )
 
-    print(job.tags.all())
+    latest_jobs = Job.objects.filter(is_active=True).filter(category__name='Latest Jobs').order_by('-updated_at')[:10]
+    latest_updates = Job.objects.filter(is_active=True).filter(category__name='Latest Updates').order_by('-updated_at')[:10]
+
+
 
     data = {
         "job": job,
@@ -111,6 +114,8 @@ def job_detail_view(request, slug):
         "meta_title": job.meta_title if job.meta_title else 'NA',
         "meta_description": job.meta_description if job.meta_description else 'NA',
         "keywords": job.keywords if job.keywords else 'NA',
+        "latest_updates": latest_updates,
+        "latest_jobs": latest_jobs,
 
         # "application_fees": job.fees.all()[0] if len(job.fees.all()) else 'NA',
         # "age_limit": job.age_limit.description if job.age_limit.description else 'NA',
