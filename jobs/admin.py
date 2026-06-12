@@ -66,7 +66,7 @@ class JobLinkAdmin(admin.ModelAdmin):
         'get_job_title',
         'title'
     )
-    search_fields = ('name',)
+    search_fields = ('title',)
 
     def get_job_title(self, obj):
         return obj.job.title
@@ -103,7 +103,7 @@ class JobWidgetAdmin(admin.ModelAdmin):
             'title',
             'is_active'
         )
-    search_fields = ('name',)
+    search_fields = ('title',)
 
     def get_job_title(self, obj):
         return obj.job.title
