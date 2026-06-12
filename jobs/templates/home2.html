@@ -276,6 +276,7 @@
                             {% if result.is_new %}
                             <span class="new-tag">NEW</span>
                             {% endif %}
+                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ result.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                         </h3>
 
                     </li>
@@ -305,7 +306,7 @@
                             {% if admit_card.is_new %}
                             <span class="new-tag">NEW</span>
                             {% endif %}
-
+                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ admit_card.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                         </h3>
 
 
@@ -332,11 +333,12 @@
                                 {% else %}
                                 {% endif %}
                             </a>
-
-
                             {% if latest_job.is_new %}
                             <span class="new-tag">NEW</span>
                             {% endif %}
+
+                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ latest_job.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                            
                         </h3>
                     </li>
                     {% endfor %}
@@ -368,6 +370,9 @@
                             {% if admission.is_new %}
                             <span class="new-tag">NEW</span>
                             {% endif %}
+
+                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ admission.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+
                         </h3>
                     </li>
                     {% endfor %}
@@ -394,6 +399,8 @@
                             {% if answer_key.is_new %}
                             <span class="new-tag">NEW</span>
                             {% endif %}
+
+                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ answer_key.updated_at|date:"l, F d, Y h:i A" }}</span></small>
 
                         </h3>
 
@@ -424,6 +431,7 @@
                             {% if document_verification.is_new %}
                             <span class="new-tag">NEW</span>
                             {% endif %}
+                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ document_verification.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                         </h3>
 
                     </li>
