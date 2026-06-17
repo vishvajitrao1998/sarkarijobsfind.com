@@ -93,6 +93,7 @@ class JobAdmin(admin.ModelAdmin):
             'is_active'
         )
     search_fields = ('title',)
+    ordering = ('-updated_at',) 
     list_filter = ('is_active', 'is_featured')
 
 
@@ -104,6 +105,7 @@ class JobWidgetAdmin(admin.ModelAdmin):
             'is_active'
         )
     search_fields = ('title',)
+    ordering = ('-updated_at',) 
 
     def get_job_title(self, obj):
         return obj.job.title
