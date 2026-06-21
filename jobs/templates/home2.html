@@ -127,7 +127,7 @@
                                 {{ job.title }}
                             </a>
                             {% if job.is_new %}
-                            <span class="new-tag">NEW</span>
+                            <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com" >
                             {% endif %}
                         </span>|
                         {% endfor %}
@@ -243,7 +243,7 @@
                     | {{ job.notification_msg }}
                     {% endif %}
                     {% if job.is_new %}
-                    <span class="new-tag">NEW</span>
+                    <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com" >
                     {% endif %}
                 </a>
             </div>
@@ -274,7 +274,7 @@
                                 {% endif %}
                             </a>
                             {% if result.is_new %}
-                            <span class="new-tag">NEW</span>
+                            <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com" >
                             {% endif %}
                             <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ result.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                         </h3>
@@ -304,7 +304,7 @@
                                 {% endif %}
                             </a>
                             {% if admit_card.is_new %}
-                            <span class="new-tag">NEW</span>
+                            <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com" >
                             {% endif %}
                             <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ admit_card.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                         </h3>
@@ -334,7 +334,7 @@
                                 {% endif %}
                             </a>
                             {% if latest_job.is_new %}
-                            <span class="new-tag">NEW</span>
+                            <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com" >
                             {% endif %}
 
                             <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ latest_job.updated_at|date:"l, F d, Y h:i A" }}</span></small>
@@ -368,7 +368,7 @@
 
 
                             {% if admission.is_new %}
-                            <span class="new-tag">NEW</span>
+                            <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com" >
                             {% endif %}
 
                             <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ admission.updated_at|date:"l, F d, Y h:i A" }}</span></small>
@@ -397,7 +397,7 @@
                                 {% endif %}
                             </a>
                             {% if answer_key.is_new %}
-                            <span class="new-tag">NEW</span>
+                            <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com" >
                             {% endif %}
 
                             <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ answer_key.updated_at|date:"l, F d, Y h:i A" }}</span></small>
@@ -429,7 +429,7 @@
                                 {% endif %}
                             </a>
                             {% if document_verification.is_new %}
-                            <span class="new-tag">NEW</span>
+                            <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com" >
                             {% endif %}
                             <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ document_verification.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                         </h3>

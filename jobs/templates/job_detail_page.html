@@ -280,7 +280,8 @@
                             {{ link.title }}
 
                             {% if link.is_new %}
-                            <span class="new-tag ms-2">NEW</span>
+                            <!-- <span class="new-tag ms-2">NEW</span> -->
+                            <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com" >
                             {% endif %}
                         </div>
 
@@ -363,7 +364,7 @@
             <div class="tags mt-2">
                 <div class="sarkari-header mb-2">Latest Updates</div>
                 {% for job in job_info.latest_updates %}
-                <a href="{% url 'job_detail_view' job.slug %}" class="tag" style="font-size: 10px;">
+                <a href="{% url 'job_detail_view' job.slug %}" class="tag">
                     👉 {{ job.title }}
                 </a>
                 {% endfor %}
