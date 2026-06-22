@@ -23,11 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-g$m-3u)c^1n%ymu&wwn6i^glv07+j339bu^%xby@^4k5n*h6(c"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ["sarkarijobsfind.com", "www.sarkarijobsfind.com"]  # Allow all hosts (for development only)
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["sarkarijobsfind.com", "www.sarkarijobsfind.com"]  # Allow all hosts (for development only)
 
 
 # Application definition
@@ -79,23 +79,23 @@ WSGI_APPLICATION = "sarkarijobsfind.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'sarkarijobsfind',
-#         'USER': 'Sjfdb',
-#         'PASSWORD': 'Sjfdb@21!',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sarkarijobsfind',
+        'USER': 'Sjfdb',
+        'PASSWORD': 'Sjfdb@21!',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
 
 
 # Password validation
