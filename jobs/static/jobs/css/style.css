@@ -707,13 +707,7 @@ a {
 
 }
 
-@media (max-width: 992px) {
-  .full-width {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-}
+
 
 
 .sarkari-box {
@@ -725,6 +719,21 @@ a {
   padding-bottom: 40px;
   /* space for button */
   height: 1500px;
+}
+
+@media (max-width: 992px) {
+  .full-width {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.sarkari-box {
+  border: 1px solid #ab183d;
+  position: relative;
+  padding-bottom: 40px;
+  height: 2000px;
+}
 }
 
 .sarkari-header {
