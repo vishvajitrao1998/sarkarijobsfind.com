@@ -692,6 +692,21 @@ a {
   background-size: 120px 6px;
 }
 
+.sarkari-box-parent {
+
+  border: 1px solid #ab183d;
+  padding-bottom: 40px;
+  height: 1500px;
+}
+
+
+.sarkari-box-double {
+
+  position: relative;
+  padding-bottom: 40px;
+
+}
+
 .sarkari-box {
 
   border: 1px solid #ab183d;
@@ -700,7 +715,7 @@ a {
   /* REQUIRED */
   padding-bottom: 40px;
   /* space for button */
-  height: 1300px;
+  height: 1500px;
 }
 
 .sarkari-header {
