@@ -707,6 +707,15 @@ a {
 
 }
 
+@media (max-width: 992px) {
+  .full-width {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+}
+
+
 .sarkari-box {
 
   border: 1px solid #ab183d;
