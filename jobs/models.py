@@ -143,7 +143,7 @@ class JobLink(models.Model):
         related_name='official_links'
     )
     title = models.CharField(max_length=255)  # Custom text (optional override)
-    url = models.URLField(blank=True, null=True)  # Optional URL field
+    url = models.URLField(blank=True, null=True, max_length=600)  # Optional URL field
     # Note Optional
     note = models.CharField(max_length=255, blank=True, null=True)
     is_new = models.BooleanField(default=False)  # highlight button
