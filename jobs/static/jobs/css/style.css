@@ -696,7 +696,7 @@ a {
 .sarkari-box-parent {
   border: 1px solid #ab183d;
   padding-bottom: 40px;
-  height: auto;
+  height: 1500px;
 }
 
 
@@ -718,25 +718,22 @@ a {
 
 @media (max-width: 992px) {
 
- .sarkari-box-parent {
+ /* .sarkari-box-parent {
 
     border: 1px solid #ab183d;
     padding-bottom: 40px;
     height: auto;
-  }
+  } */
 
 
-  .full-width {
-    /* width: 100%;
-    max-width: 100%;
-    box-sizing: border-box; */
+  /* .full-width {
     width: 100%;
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
-  }
+  } */
 
-  .full-width>div>div {
+  /* .full-width>div>div {
     flex: 1 1 50%;
   }
 
@@ -745,7 +742,7 @@ a {
     position: relative;
     padding-bottom: 40px;
     height: auto;
-  }
+  } */
 
  
 }

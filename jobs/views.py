@@ -60,6 +60,11 @@ def home(request):
         is_active=True
     ).order_by('-updated_at')
 
+    upcoming_jobs = Job.objects.filter(
+        category__name='Upcoming Jobs',
+        is_active=True
+    ).order_by('-updated_at')
+
     context = {
         'result_jobs': result_jobs,
         'admit_cards': admit_cards,
@@ -71,7 +76,8 @@ def home(request):
         "featured_jobs": featured_jobs,
         "jobs": all_jobs,
         "states": states,
-        "tenth_jobs": tenth_jobs
+        "tenth_jobs": tenth_jobs,
+        "upcoming_jobs": upcoming_jobs
     }
 
     return render(request, "home2.html", context)

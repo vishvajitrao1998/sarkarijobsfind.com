@@ -260,10 +260,11 @@
 
 
 <div class="container-md full-width">
-    <div class="row g-3">
+    <div class="row g-1">
         <!-- Result -->
         <div class="col-12 col-md-4">
-            <div class="sarkari-box">
+            <div class="sarkari-box-parent">
+            <div class="sarkari-box-double">
                 <div class="sarkari-header">Results</div>
                 <ul class="sarkari-list">
                     {% for result in result_jobs %}
@@ -289,6 +290,34 @@
                     View More →
                 </a>
             </div>
+
+            <div class="sarkari-box-double">
+                    <div class="sarkari-header mt-5">12th Jobs</div>
+                    <ul class="sarkari-list">
+                        {% for admit_card in tenth_jobs %}
+                        <li>
+                            <h3 class="job-title d-flex align-items-center gap-2">
+                                <a href="/{{ admit_card.slug }}">{{ admit_card.title }}
+                                    {% if admit_card.notification_msg %}
+                                    <small class="fw-bold job-notification">| {{ admit_card.notification_msg }}</small>
+                                    {% else %}
+                                    {% endif %}
+                                </a>
+                                {% if admit_card.is_new %}
+                                <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
+                                {% endif %}
+                                <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ admit_card.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                            </h3>
+
+
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <!-- View More -->
+                    <a href="{% url 'category_jobs' 'admit-card' %}" class="view-more-btn">View More →</a>
+            </div>
+            </div>
+
         </div>
 
         <!-- Admit Card -->
@@ -320,22 +349,22 @@
                     <a href="{% url 'category_jobs' 'admit-card' %}" class="view-more-btn">View More →</a>
                 </div>
 
-                <div class="sarkari-box-double" style="margin-top: 100%;">
-                    <div class="sarkari-header mt-5">12th Jobs</div>
+                <div class="sarkari-box-double">
+                    <div class="sarkari-header mt-5">Upcoming Jobs</div>
                     <ul class="sarkari-list">
-                        {% for admit_card in tenth_jobs %}
+                        {% for jobs in upcoming_jobs %}
                         <li>
                             <h3 class="job-title d-flex align-items-center gap-2">
-                                <a href="/{{ admit_card.slug }}">{{ admit_card.title }}
-                                    {% if admit_card.notification_msg %}
-                                    <small class="fw-bold job-notification">| {{ admit_card.notification_msg }}</small>
+                                <a href="/{{ jobs.slug }}">{{ jobs.title }}
+                                    {% if jobs.notification_msg %}
+                                    <small class="fw-bold job-notification">| {{ jobs.notification_msg }}</small>
                                     {% else %}
                                     {% endif %}
                                 </a>
-                                {% if admit_card.is_new %}
+                                {% if jobs.is_new %}
                                 <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
                                 {% endif %}
-                                <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ admit_card.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                                <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ jobs.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                             </h3>
 
 
@@ -346,8 +375,6 @@
                     <a href="{% url 'category_jobs' 'admit-card' %}" class="view-more-btn">View More →</a>
                 </div>
             </div>
-
-
         </div>
 
         <!-- Top Online Form -->
@@ -381,7 +408,7 @@
         </div>
 
         <!-- Result -->
-        <div class="col-12 col-sm-6 col-md-4">
+        <div class="col-12 col-md-4">
             <div class="sarkari-box">
                 <div class="sarkari-header">Admissions</div>
                 <ul class="sarkari-list">
@@ -413,7 +440,7 @@
         </div>
 
         <!-- Admit Card -->
-        <div class="col-12 col-sm-6 col-md-4">
+        <div class="col-12 col-md-4">
             <div class="sarkari-box">
                 <div class="sarkari-header">Answer Keys</div>
                 <ul class="sarkari-list">
@@ -443,7 +470,7 @@
         </div>
 
         <!-- Top Online Form -->
-        <div class="col-12 col-sm-6 col-md-4">
+        <div class="col-12 col-md-4">
             <div class="sarkari-box">
                 <div class="sarkari-header">Documents</div>
                 <ul class="sarkari-list">
