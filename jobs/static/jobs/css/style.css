@@ -696,7 +696,7 @@ a {
 .sarkari-box-parent {
   border: 1px solid #ab183d;
   padding-bottom: 40px;
-  height: 1500px;
+  height: auto;
 }
 
 
@@ -716,7 +716,7 @@ a {
   height: auto;
 }
 
-@media (max-width: 992px) {
+/* @media (max-width: 992px) { */
 
  /* .sarkari-box-parent {
 
@@ -745,7 +745,7 @@ a {
   } */
 
  
-}
+/* } */
 
 .sarkari-header {
   background: #ab183d;
