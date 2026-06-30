@@ -107,6 +107,75 @@
         gap: 18px;
         flex-wrap: wrap;
     }
+
+    .practice-section {
+        padding: 70px 0;
+    }
+
+    .section-title {
+        font-size: 34px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .section-subtitle {
+        color: #6c757d;
+        margin-bottom: 40px;
+    }
+
+    .practice-box {
+        background: #fff;
+        border-radius: 10px;
+        border: 1px solid #e9ecef;
+        overflow: hidden;
+        height: 100%;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, .05);
+    }
+
+    .practice-box h5 {
+        background: #ab183d;
+        color: white;
+        padding: 15px 20px;
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .practice-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .practice-list li {
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .practice-list li:last-child {
+        border-bottom: none;
+    }
+
+    .practice-list a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+        padding: 14px 18px;
+        transition: .3s;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .practice-list a:hover {
+        background: #ab183d;
+        color: #fff;
+        padding-left: 25px;
+    }
+
+    .practice-list i {
+        font-size: 14px;
+    }
 </style>
 
 {% endblock %}
@@ -264,34 +333,35 @@
         <!-- Result -->
         <div class="col-12 col-md-4">
             <div class="sarkari-box-parent">
-            <div class="sarkari-box-double">
-                <div class="sarkari-header">Results</div>
-                <ul class="sarkari-list">
-                    {% for result in result_jobs %}
-                    <li>
-                        <h3 class="job-title d-flex align-items-center gap-2">
-                            <a href="/{{ result.slug }}">{{ result.title }}
-                                {% if result.notification_msg %}
-                                <small class="fw-bold job-notification">| {{ result.notification_msg }}</small>
-                                {% else %}
+                <div class="sarkari-box-double">
+                    <div class="sarkari-header">Results</div>
+                    <ul class="sarkari-list">
+                        {% for result in result_jobs %}
+                        <li>
+                            <h3 class="job-title d-flex align-items-center gap-2">
+                                <a href="/{{ result.slug }}">{{ result.title }}
+                                    {% if result.notification_msg %}
+                                    <small class="fw-bold job-notification">| {{ result.notification_msg }}</small>
+                                    {% else %}
+                                    {% endif %}
+                                </a>
+                                {% if result.is_new %}
+                                <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
                                 {% endif %}
-                            </a>
-                            {% if result.is_new %}
-                            <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
-                            {% endif %}
-                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ result.updated_at|date:"l, F d, Y h:i A" }}</span></small>
-                        </h3>
+                                <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{
+                                        result.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                            </h3>
 
-                    </li>
-                    {% endfor %}
-                </ul>
-                <!-- View More -->
-                <a href="{% url 'category_jobs' 'results' %}" class="view-more-btn">
-                    View More →
-                </a>
-            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <!-- View More -->
+                    <a href="{% url 'category_jobs' 'results' %}" class="view-more-btn">
+                        View More →
+                    </a>
+                </div>
 
-            <div class="sarkari-box-double">
+                <div class="sarkari-box-double">
                     <div class="sarkari-header mt-5">12th Jobs</div>
                     <ul class="sarkari-list">
                         {% for admit_card in tenth_jobs %}
@@ -306,7 +376,8 @@
                                 {% if admit_card.is_new %}
                                 <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
                                 {% endif %}
-                                <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ admit_card.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                                <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{
+                                        admit_card.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                             </h3>
 
 
@@ -315,7 +386,7 @@
                     </ul>
                     <!-- View More -->
                     <a href="{% url 'category_jobs' 'admit-card' %}" class="view-more-btn">View More →</a>
-            </div>
+                </div>
             </div>
 
         </div>
@@ -338,7 +409,8 @@
                                 {% if admit_card.is_new %}
                                 <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
                                 {% endif %}
-                                <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ admit_card.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                                <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{
+                                        admit_card.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                             </h3>
 
 
@@ -364,7 +436,8 @@
                                 {% if jobs.is_new %}
                                 <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
                                 {% endif %}
-                                <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ jobs.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                                <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{
+                                        jobs.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                             </h3>
 
 
@@ -396,7 +469,8 @@
                             <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
                             {% endif %}
 
-                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ latest_job.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{
+                                    latest_job.updated_at|date:"l, F d, Y h:i A" }}</span></small>
 
                         </h3>
                     </li>
@@ -428,7 +502,8 @@
                             <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
                             {% endif %}
 
-                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ admission.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{
+                                    admission.updated_at|date:"l, F d, Y h:i A" }}</span></small>
 
                         </h3>
                     </li>
@@ -457,7 +532,8 @@
                             <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
                             {% endif %}
 
-                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ answer_key.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{
+                                    answer_key.updated_at|date:"l, F d, Y h:i A" }}</span></small>
 
                         </h3>
 
@@ -488,7 +564,8 @@
                             {% if document_verification.is_new %}
                             <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
                             {% endif %}
-                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{ document_verification.updated_at|date:"l, F d, Y h:i A" }}</span></small>
+                            <small style="color: #ab183d;"><span><strong>Last Updated: </strong></span><span>{{
+                                    document_verification.updated_at|date:"l, F d, Y h:i A" }}</span></small>
                         </h3>
 
                     </li>
@@ -550,6 +627,82 @@
         </section>
     </div>
 </div>
+
+<section class="practice-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <div class="section-heading text-center mb-4">
+                <h2 class="section-title">
+                    - MCQ Practice Sets -
+                </h2>
+                <p class="section-subtitle">
+                    Select your exam and start practicing online.
+                </p>
+
+            </div>
+
+
+
+
+
+        </div>
+        <div class="row g-4 justify-content-center">
+            <!-- SSC -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="practice-box">
+
+                    <h5>SSC Exams MCQs</h5>
+
+                    <ul class="practice-list">
+                        {% for ssc_exam in ssc_mcqs %}
+                        <li><a href="{{ ssc_exam.get_absolute_url }}">{{ ssc_exam.title }} <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                                </svg></a></li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- Railway -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="practice-box">
+
+                    <h5>HSSC Exams MCQs</h5>
+
+                    <ul class="practice-list">
+
+                         {% for hssc_exam in hssc_mcqs %}
+                        <li><a href="{{ hssc_exam.get_absolute_url }}">{{ hssc_exam.title }} <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                                </svg></a></li>
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 
 <div class="container my-5">
     <div class="why-section">

@@ -65,6 +65,16 @@ def home(request):
         is_active=True
     ).order_by('-updated_at')
 
+    # MCQ Jobs
+    ssc_mcqs = QuizTitle.objects.filter(
+        is_active=True, tags__name='SSC CGL'
+    ).order_by('-updated_at')
+
+    hssc_mcqs = QuizTitle.objects.filter(
+        is_active=True, tags__name='HSSC Jobs'
+    ).order_by('-updated_at')
+
+
     context = {
         'result_jobs': result_jobs,
         'admit_cards': admit_cards,
@@ -77,7 +87,9 @@ def home(request):
         "jobs": all_jobs,
         "states": states,
         "tenth_jobs": tenth_jobs,
-        "upcoming_jobs": upcoming_jobs
+        "upcoming_jobs": upcoming_jobs,
+        "ssc_mcqs": ssc_mcqs,
+        "hssc_mcqs": hssc_mcqs
     }
 
     return render(request, "home2.html", context)
