@@ -141,9 +141,9 @@
                                 | {{ job.notification_msg }}
                                 {% endif %}
                             </a>
-                            {% if job.is_new %}
-                            <span class="new-tag">NEW</span>
-                            {% endif %}
+                           {% if job.is_new %}
+                                <img src="{% static 'jobs/images/sarkarijobsfind.com.gif' %}" alt="SarkariJobsFind.com">
+                                {% endif %}
                         </h3>
                     </li>
                     {% endfor %}
@@ -154,13 +154,21 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="tags">
+            <div class="tags mt-2">
                 <div class="sarkari-header mb-2">Related MCQs</div>
-                {% for quiz in quizzes %}
-                <a href="{% url 'quiz_detail' quiz.slug %}" class="tag">
-                     ➡️{{ quiz.title }}
-                </a>
-                {% endfor %}
+                <table class="table table-striped table-hover">
+                     {% for quiz in quizzes %}
+                    <tr>
+                        <td>
+                            <ul style="margin: 0;">
+                                <li>
+                                    <a href="{% url 'quiz_detail' quiz.slug %}">{{ quiz.title }}</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
             </div>
             <div class="tags">
                 <div class="sarkari-header mt-4 mb-2">Tags</div>

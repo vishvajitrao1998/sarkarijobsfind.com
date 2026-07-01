@@ -19,6 +19,7 @@ body {
   --text-color: black;
   --border-color-post: #ab183d;
   --border-color-posts: #ab183d;
+  --text-color-posts: #0000ee;
 }
 
 
@@ -32,6 +33,7 @@ body {
   --single-job-color: #ff4040;
   --text-color: wheat;
   --border-color-post: #ab183d;
+  --text-color-posts: #f1f5f9;
 }
 
 
@@ -768,7 +770,7 @@ a {
 
 .sarkari-list a {
   text-decoration: none;
-  color: #0000ee;
+  color: var(--text-color-posts);
   font-size: 16px;
 }
 
