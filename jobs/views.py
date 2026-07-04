@@ -74,7 +74,6 @@ def home(request):
         is_active=True, tags__name='HSSC Jobs'
     ).order_by('-updated_at')
 
-
     context = {
         'result_jobs': result_jobs,
         'admit_cards': admit_cards,
@@ -111,6 +110,10 @@ def job_detail_view(request, slug):
 
     latest_jobs = Job.objects.filter(is_active=True).filter(category__name='Latest Jobs').order_by('-updated_at')[:10]
     latest_updates = Job.objects.filter(is_active=True).filter(category__name='Latest Updates').order_by('-updated_at')[:10]
+    upcoming_jobs = Job.objects.filter(
+        category__name='Upcoming Jobs',
+        is_active=True
+    ).order_by('-updated_at')
 
 
 
@@ -140,7 +143,7 @@ def job_detail_view(request, slug):
         "keywords": job.keywords if job.keywords else 'NA',
         "latest_updates": latest_updates,
         "latest_jobs": latest_jobs,
-
+        "upcoming_jobs": upcoming_jobs,
         # "application_fees": job.fees.all()[0] if len(job.fees.all()) else 'NA',
         # "age_limit": job.age_limit.description if job.age_limit.description else 'NA',
         # "vacancies": job.vacancies.all() if len(job.vacancies.all()) else 'NA',

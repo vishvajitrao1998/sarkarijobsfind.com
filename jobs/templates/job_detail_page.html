@@ -126,7 +126,6 @@
 <div class="container-lg px-4 py-4"><!-- Breadcrumb -->
     <div class="row">
         <div class="col-lg-9">
-
             <div
                 style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);">
                 <span class="breadcrumb-link" onclick="goToHome()">Home</span> <span>/</span> <span
@@ -384,6 +383,22 @@
                 <div class="sarkari-header mb-2">Latest Updates</div>
                 <table class="table table-striped table-hover">
                     {% for job in job_info.latest_updates %}
+                    <tr>
+                        <td>
+                            <ul style="margin: 0;">
+                                <li>
+                                    <a href="{% url 'job_detail_view' job.slug %}">{{ job.title }}</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="tags mt-2">
+                <div class="sarkari-header mb-2">Upcoming Jobs</div>
+                <table class="table table-striped table-hover">
+                    {% for job in job_info.upcoming_jobs %}
                     <tr>
                         <td>
                             <ul style="margin: 0;">
