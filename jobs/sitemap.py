@@ -4,8 +4,8 @@ from .models import Category, Job, QuizTitle, State, Tag
 from django.urls import reverse
 
 class JobSitemap(Sitemap):
-    changefreq = "hourly"
-    priority = 0.9
+    changefreq = "weekly"
+    priority = 0.7
 
     def items(self):
         return Job.objects.filter(is_active=True).order_by('-updated_at')
@@ -16,24 +16,24 @@ class JobSitemap(Sitemap):
 
 
 class CategorySitemap(Sitemap):
-    changefreq = "weekly"
-    priority = 0.8
+    changefreq = "monthly"
+    priority = 0.3
 
     def items(self):
         return Category.objects.all()
     
 
 class StateSitemap(Sitemap):
-    changefreq = "weekly"
-    priority = 0.8
+    changefreq = "monthly"
+    priority = 0.3
 
     def items(self):
         return State.objects.all()
     
 
 class StaticViewSitemap(Sitemap):
-    priority = 0.8
-    changefreq = 'daily'
+    priority = 0.3
+    changefreq = 'monthly'
 
     def items(self):
         return [
@@ -49,8 +49,8 @@ class StaticViewSitemap(Sitemap):
 
 
 class MCQSitemap(Sitemap):
-    priority = 0.8
-    changefreq = 'daily'
+    priority = 0.3
+    changefreq = 'monthly'
 
     def items(self):
         return QuizTitle.objects.filter(is_active=True).order_by('-updated_at')
@@ -60,8 +60,8 @@ class MCQSitemap(Sitemap):
     
 
 class TagSitemap(Sitemap):
-    priority = 0.8
-    changefreq = 'daily'
+    priority = 0.3
+    changefreq = 'monthly'
 
     def items(self):
         return Tag.objects.order_by('-updated_at')
